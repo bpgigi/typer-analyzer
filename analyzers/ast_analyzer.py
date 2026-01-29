@@ -32,16 +32,27 @@ class ASTAnalyzer:
         self.functions: List[FunctionInfo] = []
         self.classes: List[ClassInfo] = []
 
+    def parse_file(self, file_path: Path) -> Optional[ast.AST]:
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            return ast.parse(content)
+        except Exception as e:
+            print(f"Error parsing {file_path}: {e}")
+            return None
+
+    def analyze_file(self, file_path: Path):
+        tree = self.parse_file(file_path)
+        if not tree:
+            return
+
+        visitor = CodeVisitor()
+        visitor.visit(tree)
+
+        self.functions.extend(visitor.functions)
+        self.classes.extend(visitor.classes)
+
     def extract_functions(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
-        """
-        Extract function information.
-
-        Args:
-            limit: Maximum number of functions to return.
-
-        Returns:
-            List of function details.
-        """
         functions = []
         for func in self.functions:
             functions.append(
@@ -64,9 +75,6 @@ class ASTAnalyzer:
         return functions
 
     def get_function_stats(self) -> Dict[str, Any]:
-        """
-        Get statistics about functions.
-        """
         if not self.functions:
             return {
                 "total_functions": 0,
@@ -86,25 +94,49 @@ class ASTAnalyzer:
             "avg_length": total_length / len(self.functions),
         }
 
-    def parse_file(self, file_path: Path) -> Optional[ast.AST]:
-        try:
-            with open(file_path, "r", encoding="utf-8") as f:
-                content = f.read()
-            return ast.parse(content)
-        except Exception as e:
-            print(f"Error parsing {file_path}: {e}")
-            return None
+    def extract_classes(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
+        classes = []
+        for cls in self.classes:
+            methods_info = []
+            for method in cls.methods:
+                methods_info.append(
+                    {
+                        "name": method.name,
+                        "lineno": method.lineno,
+                        "args": method.args,
+                        "decorators": method.decorators,
+                        "complexity": method.complexity,
+                    }
+                )
 
-    def analyze_file(self, file_path: Path):
-        tree = self.parse_file(file_path)
-        if not tree:
-            return
+            classes.append(
+                {
+                    "name": cls.name,
+                    "lineno": cls.lineno,
+                    "end_lineno": cls.end_lineno,
+                    "bases": cls.bases,
+                    "methods_count": len(cls.methods),
+                    "methods": methods_info,
+                    "docstring_length": len(cls.docstring) if cls.docstring else 0,
+                }
+            )
 
-        visitor = CodeVisitor()
-        visitor.visit(tree)
+        if limit:
+            return classes[:limit]
+        return classes
 
-        self.functions.extend(visitor.functions)
-        self.classes.extend(visitor.classes)
+    def get_class_stats(self) -> Dict[str, Any]:
+        if not self.classes:
+            return {"total_classes": 0, "avg_methods": 0, "avg_bases": 0}
+
+        total_methods = sum(len(c.methods) for c in self.classes)
+        total_bases = sum(len(c.bases) for c in self.classes)
+
+        return {
+            "total_classes": len(self.classes),
+            "avg_methods": total_methods / len(self.classes),
+            "avg_bases": total_bases / len(self.classes),
+        }
 
 
 class CodeVisitor(ast.NodeVisitor):

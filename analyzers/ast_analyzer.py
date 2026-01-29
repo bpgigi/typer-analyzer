@@ -32,6 +32,60 @@ class ASTAnalyzer:
         self.functions: List[FunctionInfo] = []
         self.classes: List[ClassInfo] = []
 
+    def extract_functions(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
+        """
+        Extract function information.
+
+        Args:
+            limit: Maximum number of functions to return.
+
+        Returns:
+            List of function details.
+        """
+        functions = []
+        for func in self.functions:
+            functions.append(
+                {
+                    "name": func.name,
+                    "lineno": func.lineno,
+                    "end_lineno": func.end_lineno,
+                    "args_count": len(func.args),
+                    "args": func.args,
+                    "decorators_count": len(func.decorators),
+                    "decorators": func.decorators,
+                    "is_async": func.is_async,
+                    "complexity": func.complexity,
+                    "docstring_length": len(func.docstring) if func.docstring else 0,
+                }
+            )
+
+        if limit:
+            return functions[:limit]
+        return functions
+
+    def get_function_stats(self) -> Dict[str, Any]:
+        """
+        Get statistics about functions.
+        """
+        if not self.functions:
+            return {
+                "total_functions": 0,
+                "async_functions": 0,
+                "avg_args": 0,
+                "avg_length": 0,
+            }
+
+        total_args = sum(len(f.args) for f in self.functions)
+        total_length = sum(f.end_lineno - f.lineno for f in self.functions)
+        async_count = sum(1 for f in self.functions if f.is_async)
+
+        return {
+            "total_functions": len(self.functions),
+            "async_functions": async_count,
+            "avg_args": total_args / len(self.functions),
+            "avg_length": total_length / len(self.functions),
+        }
+
     def parse_file(self, file_path: Path) -> Optional[ast.AST]:
         try:
             with open(file_path, "r", encoding="utf-8") as f:

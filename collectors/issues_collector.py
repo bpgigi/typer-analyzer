@@ -62,50 +62,68 @@ class IssuesCollector:
         issues = []
         page = 1
 
+        # Use session with retries for robustness
+        from requests.adapters import HTTPAdapter
+        from urllib3.util.retry import Retry
+
+        retry_strategy = Retry(
+            total=3,
+            backoff_factor=1,
+            status_forcelist=[429, 500, 502, 503, 504],
+        )
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        self.session.mount("https://", adapter)
+        self.session.mount("http://", adapter)
+
         while True:
             url = f"{self.BASE_URL}/repos/{owner}/{repo}/issues"
             params = {"state": state, "per_page": 100, "page": page}
             if since:
                 params["since"] = since.isoformat()
 
-            resp = self.session.get(url, params=params)
-            if resp.status_code != 200:
-                break
+            try:
+                resp = self.session.get(url, params=params, timeout=30)
+                if resp.status_code != 200:
+                    print(f"Failed to fetch issues: {resp.status_code}")
+                    break
 
-            data = resp.json()
-            if not data:
-                break
+                data = resp.json()
+                if not data:
+                    break
 
-            for item in data:
-                if "pull_request" in item:
-                    continue
+                for item in data:
+                    if "pull_request" in item:
+                        continue
 
-                created = datetime.fromisoformat(
-                    item["created_at"].replace("Z", "+00:00")
-                )
-                closed = None
-                if item.get("closed_at"):
-                    closed = datetime.fromisoformat(
-                        item["closed_at"].replace("Z", "+00:00")
+                    created = datetime.fromisoformat(
+                        item["created_at"].replace("Z", "+00:00")
+                    )
+                    closed = None
+                    if item.get("closed_at"):
+                        closed = datetime.fromisoformat(
+                            item["closed_at"].replace("Z", "+00:00")
+                        )
+
+                    labels = [label["name"] for label in item.get("labels", [])]
+
+                    issues.append(
+                        IssueInfo(
+                            number=item["number"],
+                            title=item["title"],
+                            state=item["state"],
+                            created_at=created,
+                            closed_at=closed,
+                            author=item["user"]["login"],
+                            labels=labels,
+                            comments_count=item.get("comments", 0),
+                        )
                     )
 
-                labels = [label["name"] for label in item.get("labels", [])]
-
-                issues.append(
-                    IssueInfo(
-                        number=item["number"],
-                        title=item["title"],
-                        state=item["state"],
-                        created_at=created,
-                        closed_at=closed,
-                        author=item["user"]["login"],
-                        labels=labels,
-                        comments_count=item.get("comments", 0),
-                    )
-                )
-
-            page += 1
-            if page > 10:
+                page += 1
+                if page > 10:
+                    break
+            except Exception as e:
+                print(f"Error collecting issues: {e}")
                 break
 
         if self.cache:

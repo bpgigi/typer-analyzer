@@ -40,24 +40,27 @@ class IssuesCollector:
     ) -> List[IssueInfo]:
         cache_key = f"issues_{owner}_{repo}_{state}"
         if self.cache:
-            cached_data = self.cache.load_json(f"{cache_key}.json")
-            if cached_data:
-                print(f"Loaded {len(cached_data)} issues from cache")
-                return [
-                    IssueInfo(
-                        number=i["number"],
-                        title=i["title"],
-                        state=i["state"],
-                        created_at=datetime.fromisoformat(i["created_at"]),
-                        closed_at=datetime.fromisoformat(i["closed_at"])
-                        if i.get("closed_at")
-                        else None,
-                        author=i["author"],
-                        labels=i["labels"],
-                        comments_count=i["comments_count"],
-                    )
-                    for i in cached_data
-                ]
+            try:
+                cached_data = self.cache.load_json(f"{cache_key}.json")
+                if cached_data:
+                    print(f"Loaded {len(cached_data)} issues from cache")
+                    return [
+                        IssueInfo(
+                            number=i["number"],
+                            title=i["title"],
+                            state=i["state"],
+                            created_at=datetime.fromisoformat(i["created_at"]),
+                            closed_at=datetime.fromisoformat(i["closed_at"])
+                            if i.get("closed_at")
+                            else None,
+                            author=i["author"],
+                            labels=i["labels"],
+                            comments_count=i["comments_count"],
+                        )
+                        for i in cached_data
+                    ]
+            except Exception as e:
+                print(f"Error loading cache: {e}")
 
         issues = []
         page = 1
@@ -66,14 +69,17 @@ class IssuesCollector:
         from requests.adapters import HTTPAdapter
         from urllib3.util.retry import Retry
 
-        retry_strategy = Retry(
-            total=3,
-            backoff_factor=1,
-            status_forcelist=[429, 500, 502, 503, 504],
-        )
-        adapter = HTTPAdapter(max_retries=retry_strategy)
-        self.session.mount("https://", adapter)
-        self.session.mount("http://", adapter)
+        try:
+            retry_strategy = Retry(
+                total=3,
+                backoff_factor=1,
+                status_forcelist=[429, 500, 502, 503, 504],
+            )
+            adapter = HTTPAdapter(max_retries=retry_strategy)
+            self.session.mount("https://", adapter)
+            self.session.mount("http://", adapter)
+        except Exception as e:
+            print(f"Warning: Could not configure retry strategy: {e}")
 
         while True:
             url = f"{self.BASE_URL}/repos/{owner}/{repo}/issues"

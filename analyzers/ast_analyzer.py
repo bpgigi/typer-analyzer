@@ -36,6 +36,8 @@ class ASTAnalyzer:
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
+            if not content.strip():
+                return None
             return ast.parse(content)
         except Exception as e:
             print(f"Error parsing {file_path}: {e}")

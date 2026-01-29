@@ -2,6 +2,7 @@ import requests
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from datetime import datetime
+from utils.cache import Cache
 
 
 @dataclass
@@ -19,7 +20,7 @@ class IssueInfo:
 class IssuesCollector:
     BASE_URL = "https://api.github.com"
 
-    def __init__(self, token: Optional[str] = None):
+    def __init__(self, token: Optional[str] = None, use_cache: bool = True):
         self.headers = {
             "Accept": "application/vnd.github.v3+json",
             "User-Agent": "TyperAnalyzer",
@@ -28,6 +29,7 @@ class IssuesCollector:
             self.headers["Authorization"] = f"token {token}"
         self.session = requests.Session()
         self.session.headers.update(self.headers)
+        self.cache = Cache() if use_cache else None
 
     def collect_issues(
         self,
@@ -36,6 +38,27 @@ class IssuesCollector:
         state: str = "all",
         since: Optional[datetime] = None,
     ) -> List[IssueInfo]:
+        cache_key = f"issues_{owner}_{repo}_{state}"
+        if self.cache:
+            cached_data = self.cache.load_json(f"{cache_key}.json")
+            if cached_data:
+                print(f"Loaded {len(cached_data)} issues from cache")
+                return [
+                    IssueInfo(
+                        number=i["number"],
+                        title=i["title"],
+                        state=i["state"],
+                        created_at=datetime.fromisoformat(i["created_at"]),
+                        closed_at=datetime.fromisoformat(i["closed_at"])
+                        if i.get("closed_at")
+                        else None,
+                        author=i["author"],
+                        labels=i["labels"],
+                        comments_count=i["comments_count"],
+                    )
+                    for i in cached_data
+                ]
+
         issues = []
         page = 1
 
@@ -84,6 +107,22 @@ class IssuesCollector:
             page += 1
             if page > 10:
                 break
+
+        if self.cache:
+            data_to_cache = [
+                {
+                    "number": i.number,
+                    "title": i.title,
+                    "state": i.state,
+                    "created_at": i.created_at.isoformat(),
+                    "closed_at": i.closed_at.isoformat() if i.closed_at else None,
+                    "author": i.author,
+                    "labels": i.labels,
+                    "comments_count": i.comments_count,
+                }
+                for i in issues
+            ]
+            self.cache.save_json(data_to_cache, f"{cache_key}.json")
 
         return issues
 

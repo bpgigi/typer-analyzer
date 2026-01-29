@@ -51,6 +51,10 @@ class BaseChart:
         labels = list(data.keys())
         sizes = list(data.values())
 
+        # Use custom warm palette from config
+        # Ensure we have enough colors by repeating palette if necessary
+        colors = (WARM_PALETTE * (len(labels) // len(WARM_PALETTE) + 1))[: len(labels)]
+
         if donut:
             plt.pie(
                 sizes,
@@ -58,7 +62,7 @@ class BaseChart:
                 autopct="%1.1f%%",
                 startangle=90,
                 pctdistance=0.85,
-                colors=WARM_PALETTE,
+                colors=colors,
                 wedgeprops={"width": 0.5, "edgecolor": "white"},
             )
             centre_circle = plt.Circle((0, 0), 0.70, fc="white")
@@ -69,7 +73,7 @@ class BaseChart:
                 labels=labels,
                 autopct="%1.1f%%",
                 startangle=90,
-                colors=WARM_PALETTE,
+                colors=colors,
                 wedgeprops={"edgecolor": "white"},
             )
 

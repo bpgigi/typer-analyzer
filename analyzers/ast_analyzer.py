@@ -94,6 +94,39 @@ class ASTAnalyzer:
             "avg_length": total_length / len(self.functions),
         }
 
+    def extract_imports(self) -> List[Dict[str, Any]]:
+        imports = []
+        for file_path in self.repo_path.rglob("*.py"):
+            tree = self.parse_file(file_path)
+            if not tree:
+                continue
+
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Import):
+                    for alias in node.names:
+                        imports.append(
+                            {
+                                "type": "import",
+                                "module": alias.name,
+                                "alias": alias.asname,
+                                "file": str(file_path.relative_to(self.repo_path)),
+                            }
+                        )
+                elif isinstance(node, ast.ImportFrom):
+                    module = node.module or ""
+                    for alias in node.names:
+                        imports.append(
+                            {
+                                "type": "from_import",
+                                "module": f"{module}.{alias.name}"
+                                if module
+                                else alias.name,
+                                "alias": alias.asname,
+                                "file": str(file_path.relative_to(self.repo_path)),
+                            }
+                        )
+        return imports
+
     def extract_decorators(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
         from collections import Counter
 

@@ -56,6 +56,13 @@ def func_partial(a: int, b) -> None:
         if output_path.exists():
             output_path.unlink()
 
+    def test_error_handling(self):
+        bad_file = self.test_dir / "bad.py"
+        with open(bad_file, "w") as f:
+            f.write("def broken(")
+        self.analyzer.analyze_file(bad_file)
+        self.assertGreater(len(self.analyzer.errors), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

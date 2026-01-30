@@ -29,14 +29,20 @@ class LibCSTAnalyzer:
         self.repo_path = Path(repo_path)
         self.type_annotations: List[TypeAnnotationInfo] = []
         self.coverage_data: Dict[str, Any] = {}
+        self.errors: List[str] = []
 
     def parse_file(self, file_path: Path) -> Optional[cst.Module]:
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
+            if not content.strip():
+                return None
             return cst.parse_module(content)
+        except cst.ParserSyntaxError as e:
+            self.errors.append(f"Syntax error in {file_path}: {e}")
+            return None
         except Exception as e:
-            print(f"Error parsing {file_path}: {e}")
+            self.errors.append(f"Error parsing {file_path}: {e}")
             return None
 
     def analyze_file(self, file_path: Path):
@@ -44,10 +50,13 @@ class LibCSTAnalyzer:
         if not tree:
             return
 
-        visitor = TypeCollector(str(file_path.relative_to(self.repo_path)))
-        tree.visit(visitor)
-        self.type_annotations.extend(visitor.annotations)
-        self.coverage_data[str(file_path)] = visitor.coverage_stats
+        try:
+            visitor = TypeCollector(str(file_path.relative_to(self.repo_path)))
+            tree.visit(visitor)
+            self.type_annotations.extend(visitor.annotations)
+            self.coverage_data[str(file_path)] = visitor.coverage_stats
+        except Exception as e:
+            self.errors.append(f"Error analyzing {file_path}: {e}")
 
     def get_annotation_stats(self) -> Dict[str, Any]:
         total_annotations = len(self.type_annotations)
@@ -62,6 +71,7 @@ class LibCSTAnalyzer:
             "total_annotations": total_annotations,
             "arg_annotations": arg_annotations,
             "return_annotations": return_annotations,
+            "errors": len(self.errors),
         }
 
     def calculate_coverage(self) -> CoverageStats:
@@ -102,6 +112,7 @@ class LibCSTAnalyzer:
                 "return_annotated": stats.return_annotated,
                 "coverage_percentage": round(stats.coverage_percentage, 2),
             },
+            "errors": self.errors,
             "annotations": [
                 {
                     "file": ann.file_path,

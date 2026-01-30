@@ -15,7 +15,7 @@ class DynamicTracer:
         self.current_trace_file: Optional[Path] = None
         self._lock = threading.Lock()
 
-    def start_trace(self, name: str, variables: Optional[List[str]] = None):
+    def start_trace(self, name: str, watch: Optional[List[str]] = None):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"trace_{name}_{timestamp}.log"
         self.current_trace_file = self.trace_dir / filename
@@ -24,11 +24,29 @@ class DynamicTracer:
 
         return pysnooper.snoop(
             str(self.current_trace_file),
-            variables=variables,
+            watch=watch,
             depth=2,
             prefix=f"[{name}] ",
             overwrite=True,
         )
+
+    def trace_typer_core(self):
+        variables = ["app", "command", "typer_instance"]
+
+        with self.start_trace("typer_core", watch=variables):
+            try:
+                import typer
+
+                app = typer.Typer()
+
+                @app.command()
+                def hello(name: str):
+                    print(f"Hello {name}")
+
+            except ImportError:
+                print("Typer not installed, skipping trace")
+            except Exception as e:
+                print(f"Error in typer trace: {e}")
 
     def get_trace_content(self) -> str:
         if not self.current_trace_file or not self.current_trace_file.exists():

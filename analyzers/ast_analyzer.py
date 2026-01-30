@@ -36,8 +36,6 @@ class ASTAnalyzer:
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
-            if not content.strip():
-                return None
             return ast.parse(content)
         except Exception as e:
             print(f"Error parsing {file_path}: {e}")
@@ -95,6 +93,24 @@ class ASTAnalyzer:
             "avg_args": total_args / len(self.functions),
             "avg_length": total_length / len(self.functions),
         }
+
+    def extract_decorators(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
+        from collections import Counter
+
+        all_decorators = []
+        for func in self.functions:
+            all_decorators.extend(func.decorators)
+
+        decorator_counts = Counter(all_decorators)
+
+        results = [
+            {"name": name, "count": count}
+            for name, count in decorator_counts.most_common()
+        ]
+
+        if limit:
+            return results[:limit]
+        return results
 
     def extract_classes(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
         classes = []

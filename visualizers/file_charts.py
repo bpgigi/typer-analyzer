@@ -23,3 +23,28 @@ class FileHeatmap(BaseChart):
         plt.axis("off")
 
         return self.save_plot(filename)
+
+    def plot_file_type_distribution(
+        self,
+        file_data: Dict[str, int],
+        filename: str = "14_file_type_pie.png",
+    ):
+        plt.figure(figsize=(10, 8))
+
+        labels = list(file_data.keys())
+        sizes = list(file_data.values())
+        colors = self.warm_colors[: len(labels)]
+
+        plt.pie(
+            sizes,
+            labels=labels,
+            colors=colors,
+            autopct="%1.1f%%",
+            startangle=90,
+            textprops={"fontsize": 12},
+        )
+        plt.title("File Type Distribution", fontsize=16, fontweight="bold")
+        plt.axis("equal")
+        plt.tight_layout()
+
+        return self.save_plot(filename)

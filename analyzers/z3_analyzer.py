@@ -133,6 +133,95 @@ class Z3Analyzer:
             logger.error(f"Error verifying callback path {callback_name}: {e}")
             return False
 
+    def check_type_compatibility(self, type1: str, type2: str) -> bool:
+        """
+        Check if two types are compatible (simplified).
+        Returns True if type1 is compatible with type2 (e.g. Int is compatible with Union[Int, Str]).
+        """
+        self.solver.reset()
+
+        # Simple representation:
+        # 1 = Int, 2 = Str, 3 = Bool, 4 = Float
+        # Union types encoded as bitmasks if needed, or simplistically:
+
+        # Heuristic approach for this demonstration:
+        # We define compatibility as logical implication in Z3
+
+        # Create a universe of types
+        t1 = Int("t1")
+        t2 = Int("t2")
+
+        # Encodings
+        TYPE_INT = 1
+        TYPE_STR = 2
+        TYPE_BOOL = 3
+
+        # Parse types (very simple parser)
+        def get_type_code(t_str):
+            t_str = t_str.lower()
+            if "int" in t_str:
+                return TYPE_INT
+            if "str" in t_str:
+                return TYPE_STR
+            if "bool" in t_str:
+                return TYPE_BOOL
+            return 0
+
+        code1 = get_type_code(type1)
+        code2 = get_type_code(type2)
+
+        # If types are same, compatible
+        if code1 == code2 and code1 != 0:
+            return True
+
+        # Union handling (simple)
+        if "Union" in type2 or "|" in type2:
+            # If type1 is one of the types in type2
+            # Z3 check: is code1 ONE OF the codes in type2?
+            # We'll rely on python string check for this demo as full type parsing is complex
+            # But to use Z3:
+
+            is_compatible = Bool("is_compatible")
+
+            # Constraints: is_compatible is true IF code1 matches any sub-type in code2
+            # Here we just verify if we can assign code1 to code2's logic space
+            pass
+
+        # For this specific task, we'll implement a logic check using Z3 boolean logic
+        # Represent types as boolean flags
+        is_int_1 = Bool(f"{type1}_is_int")
+        is_str_1 = Bool(f"{type1}_is_str")
+
+        # If type1 is Int, imply is_int_1 is True
+        if "int" in type1.lower():
+            self.solver.add(is_int_1)
+            self.solver.add(Not(is_str_1))
+        elif "str" in type1.lower():
+            self.solver.add(is_str_1)
+            self.solver.add(Not(is_int_1))
+
+        # Compatibility conditions
+        if "Union" in type2:
+            # Union[Int, Str] -> accepts Int OR Str
+            accepts_int = "int" in type2.lower()
+            accepts_str = "str" in type2.lower()
+
+            condition = Or(
+                And(is_int_1, BoolVal(accepts_int)), And(is_str_1, BoolVal(accepts_str))
+            )
+            self.solver.add(condition)
+        else:
+            # Strict match
+            target_is_int = "int" in type2.lower()
+            target_is_str = "str" in type2.lower()
+
+            condition = And(
+                is_int_1 == BoolVal(target_is_int), is_str_1 == BoolVal(target_is_str)
+            )
+            self.solver.add(condition)
+
+        return self.solver.check() == sat
+
     def reset(self):
         self.solver.reset()
         self.variables.clear()

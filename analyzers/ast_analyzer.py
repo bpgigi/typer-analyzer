@@ -137,7 +137,9 @@ class CodeVisitor(ast.NodeVisitor):
         class_info = ClassInfo(
             name=node.name,
             lineno=node.lineno,
-            end_lineno=node.end_lineno if hasattr(node, "end_lineno") else node.lineno,
+            end_lineno=node.end_lineno
+            if hasattr(node, "end_lineno") and node.end_lineno is not None
+            else node.lineno,
             bases=bases,
             docstring=docstring,
         )
@@ -150,3 +152,46 @@ class CodeVisitor(ast.NodeVisitor):
         elif isinstance(node, ast.Attribute):
             return f"{self._get_base_name(node.value)}.{node.attr}"
         return "unknown"
+
+    def export_to_csv(self, output_file: str):
+        import csv
+
+        headers = [
+            "name",
+            "type",
+            "line",
+            "args_count",
+            "complexity",
+            "docstring_len",
+            "decorators",
+        ]
+
+        with open(output_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(headers)
+
+            for func in self.functions:
+                writer.writerow(
+                    [
+                        func.name,
+                        "async_function" if func.is_async else "function",
+                        func.lineno,
+                        len(func.args),
+                        func.complexity,
+                        len(func.docstring) if func.docstring else 0,
+                        len(func.decorators),
+                    ]
+                )
+
+            for cls in self.classes:
+                writer.writerow(
+                    [
+                        cls.name,
+                        "class",
+                        cls.lineno,
+                        0,
+                        0,
+                        len(cls.docstring) if cls.docstring else 0,
+                        0,
+                    ]
+                )

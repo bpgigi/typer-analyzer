@@ -67,11 +67,19 @@ class LibCSTAnalyzer:
             1 for a in self.type_annotations if a.arg_name == "return"
         )
 
+        # Analyze generic types
+        generics = {}
+        for ann in self.type_annotations:
+            if "[" in ann.annotation:
+                base_type = ann.annotation.split("[")[0]
+                generics[base_type] = generics.get(base_type, 0) + 1
+
         return {
             "total_annotations": total_annotations,
             "arg_annotations": arg_annotations,
             "return_annotations": return_annotations,
             "errors": len(self.errors),
+            "generics": generics,
         }
 
     def calculate_coverage(self) -> CoverageStats:

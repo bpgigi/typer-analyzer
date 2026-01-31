@@ -8,6 +8,7 @@ from .churn_charts import ChurnChart
 from .yearly_charts import YearlyChart
 from .issues_charts import IssuesChart
 from .contributor_charts import ContributorRadarChart
+from .pr_charts import PRCharts
 
 __all__ = [
     "BaseChart",
@@ -20,4 +21,5 @@ __all__ = [
     "YearlyChart",
     "IssuesChart",
     "ContributorRadarChart",
+    "PRCharts",
 ]

@@ -223,6 +223,7 @@ class Z3Analyzer:
         return self.solver.check() == sat
 
     def reset(self):
+        """Reset the solver state and clear all variables/constraints."""
         self.solver.reset()
         self.variables.clear()
         self.constraints.clear()

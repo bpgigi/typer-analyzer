@@ -22,16 +22,18 @@ class ContributorRadarChart(BaseChart):
         plt.figure(figsize=(10, 10))
         ax = plt.subplot(111, polar=True)
 
+        # Ensure labels are placed correctly
         plt.xticks(angles[:-1], categories, color="grey", size=10)
 
-        ax.set_rlabel_position(0)
+        # Fix radial label position
+        ax.set_rlabel_position(30)
         plt.yticks(
             [0.2, 0.4, 0.6, 0.8, 1.0],
             ["0.2", "0.4", "0.6", "0.8", "1.0"],
             color="grey",
-            size=7,
+            size=8,
         )
-        plt.ylim(0, 1)
+        plt.ylim(0, 1.1)
 
         colors = self.warm_colors
         for i, (name, stats) in enumerate(contributor_data.items()):
@@ -40,12 +42,12 @@ class ContributorRadarChart(BaseChart):
 
             color = colors[i % len(colors)]
             ax.plot(
-                angles, values, linewidth=1, linestyle="solid", label=name, color=color
+                angles, values, linewidth=2, linestyle="solid", label=name, color=color
             )
-            ax.fill(angles, values, color=color, alpha=0.1)
+            ax.fill(angles, values, color=color, alpha=0.15)
 
-        plt.title("Contributor Activity Radar", size=20, y=1.1, fontweight="bold")
-        plt.legend(loc="upper right", bbox_to_anchor=(0.1, 0.1))
+        plt.title("Contributor Activity Radar", size=20, y=1.05, fontweight="bold")
+        plt.legend(loc="upper right", bbox_to_anchor=(1.2, 1.0))
         plt.tight_layout()
 
         return self.save_plot(filename)

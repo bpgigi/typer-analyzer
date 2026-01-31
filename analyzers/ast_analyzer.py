@@ -124,7 +124,10 @@ class CodeVisitor(ast.NodeVisitor):
             ):
                 complexity += 1
             elif isinstance(child, ast.BoolOp):
+                # Each operator adds complexity
                 complexity += len(child.values) - 1
+            elif isinstance(child, ast.comprehension):
+                complexity += 1
 
         func_info = FunctionInfo(
             name=node.name,

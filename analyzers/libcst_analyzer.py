@@ -134,6 +134,25 @@ class LibCSTAnalyzer:
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
 
+    def export_to_csv(self, output_file: str):
+        import csv
+
+        headers = ["file", "function", "arg", "annotation"]
+
+        with open(output_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=headers)
+            writer.writeheader()
+
+            for ann in self.type_annotations:
+                writer.writerow(
+                    {
+                        "file": ann.file_path,
+                        "function": ann.function_name,
+                        "arg": ann.arg_name,
+                        "annotation": ann.annotation,
+                    }
+                )
+
     def extract_annotations(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
         annotations = []
         for ann in self.type_annotations:

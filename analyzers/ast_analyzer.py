@@ -50,21 +50,19 @@ class ASTAnalyzer:
         visitor.visit(tree)
         self.functions.extend(visitor.functions)
         self.classes.extend(visitor.classes)
+        # Store imports if needed for dependency analysis directly from here
 
     def analyze_dependencies(self, file_path: Path) -> List[str]:
+        # Now uses the optimized visitor if we integrate it,
+        # but for backward compatibility we keep the standalone method or refactor it
+        # Refactored to use CodeVisitor to avoid re-parsing if integrated
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
             tree = ast.parse(content)
-            imports = []
-            for node in ast.walk(tree):
-                if isinstance(node, ast.Import):
-                    for alias in node.names:
-                        imports.append(alias.name)
-                elif isinstance(node, ast.ImportFrom):
-                    if node.module:
-                        imports.append(node.module)
-            return imports
+            visitor = CodeVisitor()
+            visitor.visit(tree)
+            return visitor.imports
         except Exception:
             return []
 

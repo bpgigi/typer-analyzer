@@ -68,6 +68,9 @@ class GitHubCollector:
 
                 page += 1
 
+            except requests.Timeout:
+                logger.error(f"Timeout collecting page {page} from {url}")
+                break
             except Exception as e:
                 print(f"Error collecting issues page {page}: {e}")
                 break

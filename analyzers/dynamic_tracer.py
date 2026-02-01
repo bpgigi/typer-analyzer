@@ -204,18 +204,18 @@ class DynamicTracer:
 
         with open(output_file, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow(["metric", "value", "description"])
+            writer.writerow(["Metric", "Value", "Description"])  # Capitalized headers
 
             writer.writerow(
                 [
-                    "total_traces",
+                    "Total Traces",
                     self.get_trace_summary()["total_traces"],
                     "Total execution traces captured",
                 ]
             )
             writer.writerow(
                 [
-                    "total_callbacks",
+                    "Total Callbacks",
                     summary_data["total_callbacks"],
                     "Total callback invocations",
                 ]
@@ -224,7 +224,7 @@ class DynamicTracer:
             for type_name, count in summary_data["callback_types"].items():
                 writer.writerow(
                     [
-                        f"callback_type_{type_name}",
+                        f"Callback Type: {type_name}",
                         count,
                         f"Count of {type_name} callbacks",
                     ]

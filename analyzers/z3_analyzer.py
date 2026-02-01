@@ -40,12 +40,21 @@ class Z3Analyzer:
         self.constraints.append(description if description else str(constraint))
 
     def check_constraints(self) -> str:
-        result = self.solver.check()
-        return str(result)
+        """Check if current constraints are satisfiable."""
+        try:
+            result = self.solver.check()
+            return str(result)
+        except Z3Exception as e:
+            logger.error(f"Z3 Solver Error: {e}")
+            return "error"
 
     def get_model(self) -> Optional[ModelRef]:
-        if self.solver.check() == sat:
-            return self.solver.model()
+        """Get the model if satisfiable."""
+        try:
+            if self.solver.check() == sat:
+                return self.solver.model()
+        except Z3Exception:
+            pass
         return None
 
     def verify_parameter_constraints(

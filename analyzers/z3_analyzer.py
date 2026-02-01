@@ -222,6 +222,28 @@ class Z3Analyzer:
 
         return self.solver.check() == sat
 
+    def export_analysis_csv(
+        self, output_file: str, analysis_results: List[Dict[str, Any]]
+    ):
+        import csv
+
+        headers = ["type", "variable", "constraint", "status", "value"]
+
+        with open(output_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=headers)
+            writer.writeheader()
+
+            for result in analysis_results:
+                writer.writerow(
+                    {
+                        "type": result.get("type", "constraint"),
+                        "variable": result.get("variable", ""),
+                        "constraint": result.get("constraint", ""),
+                        "status": result.get("status", "unknown"),
+                        "value": str(result.get("value", "")),
+                    }
+                )
+
     def reset(self):
         """Reset the solver state and clear all variables/constraints."""
         self.solver.reset()

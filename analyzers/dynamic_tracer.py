@@ -197,6 +197,39 @@ class DynamicTracer:
 
         return patterns
 
+    def export_summary_csv(self, output_file: str):
+        import csv
+
+        summary_data = self.analyze_callback_patterns()
+
+        with open(output_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(["metric", "value", "description"])
+
+            writer.writerow(
+                [
+                    "total_traces",
+                    self.get_trace_summary()["total_traces"],
+                    "Total execution traces captured",
+                ]
+            )
+            writer.writerow(
+                [
+                    "total_callbacks",
+                    summary_data["total_callbacks"],
+                    "Total callback invocations",
+                ]
+            )
+
+            for type_name, count in summary_data["callback_types"].items():
+                writer.writerow(
+                    [
+                        f"callback_type_{type_name}",
+                        count,
+                        f"Count of {type_name} callbacks",
+                    ]
+                )
+
     def get_trace_summary(self) -> Dict[str, Any]:
         return {
             "total_traces": len(list(self.trace_dir.glob("*.log"))),

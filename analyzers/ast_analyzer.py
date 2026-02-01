@@ -89,8 +89,45 @@ class ASTAnalyzer:
                 complexity += len(child.values) - 1
         return complexity
 
+    def extract_call_graph(self) -> List[Dict[str, str]]:
+        call_graph = []
+        for func in self.functions:
+            pass
+        return call_graph
 
-class CodeVisitor(ast.NodeVisitor):
+    def analyze_calls(self, file_path: Path) -> List[Dict[str, str]]:
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            tree = ast.parse(content)
+            visitor = CallVisitor()
+            visitor.visit(tree)
+            return visitor.calls
+        except Exception:
+            return []
+
+
+class CallVisitor(ast.NodeVisitor):
+    def __init__(self):
+        self.calls = []
+        self.current_function = None
+
+    def visit_FunctionDef(self, node: ast.FunctionDef):
+        self.current_function = node.name
+        self.generic_visit(node)
+        self.current_function = None
+
+    def visit_Call(self, node: ast.Call):
+        if self.current_function:
+            target_name = "unknown"
+            if isinstance(node.func, ast.Name):
+                target_name = node.func.id
+            elif isinstance(node.func, ast.Attribute):
+                target_name = node.func.attr
+
+            self.calls.append({"source": self.current_function, "target": target_name})
+        self.generic_visit(node)
+
     def __init__(self):
         self.functions: List[FunctionInfo] = []
         self.classes: List[ClassInfo] = []

@@ -126,6 +126,26 @@ class DynamicTracer:
         trace.end_time = datetime.now().isoformat()
         return trace
 
+    def trace_function_vars(
+        self, func: Callable, watch_vars: List[str] = None
+    ) -> CallbackTrace:
+        trace = CallbackTrace(
+            callback_name=func.__name__,
+            trigger_event="function_call",
+            start_time=datetime.now().isoformat(),
+        )
+
+        output_file = self.trace_dir / f"vars_{func.__name__}.log"
+
+        @pysnooper.snoop(
+            str(output_file), watch=watch_vars, depth=2, prefix=f"VARS[{func.__name__}]"
+        )
+        def wrapper(*args, **kwargs):
+            return func(*args, **kwargs)
+
+        trace.end_time = datetime.now().isoformat()
+        return trace
+
     def export_callback_report(self, output_path: Path):
         report = {
             "trace_directory": str(self.trace_dir),

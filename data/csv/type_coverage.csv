@@ -1,0 +1,2218 @@
+文件,函数,参数,注解
+pdm_build.py,pdm_build_initialize,context,Context
+scripts\deploy_docs_status.py,main,return,None
+scripts\docs.py,callback,return,None
+scripts\docs.py,generate_readme_content,return,str
+scripts\docs.py,generate_readme,return,None
+scripts\docs.py,verify_readme,return,None
+scripts\docs.py,live,return,None
+scripts\docs.py,live,dirty,bool
+scripts\docs.py,build,return,None
+scripts\docs.py,serve,return,None
+scripts\docs.py,generate_docs_src_versions_for_file,return,None
+scripts\docs.py,generate_docs_src_versions_for_file,file_path,Path
+scripts\mkdocs_hooks.py,generate_renamed_section_items,return,"list[Union[Page, Section, Link]]"
+scripts\mkdocs_hooks.py,generate_renamed_section_items,items,"list[Union[Page, Section, Link]]"
+scripts\mkdocs_hooks.py,generate_renamed_section_items,config,MkDocsConfig
+scripts\mkdocs_hooks.py,on_nav,return,Navigation
+scripts\mkdocs_hooks.py,on_nav,nav,Navigation
+scripts\mkdocs_hooks.py,on_nav,config,MkDocsConfig
+scripts\mkdocs_hooks.py,on_nav,files,Files
+scripts\mkdocs_hooks.py,on_nav,kwargs,Any
+tests\test_ambiguous_params.py,cmd,my_param,"Annotated[str, typer.Argument(""foo"")]"
+tests\test_ambiguous_params.py,cmd,my_param,"Annotated[str, typer.Option(""--some-opt"")]"
+tests\test_ambiguous_params.py,cmd,my_param,"Annotated[str, param()]"
+tests\test_ambiguous_params.py,cmd,my_param,"Annotated[str, typer.Argument(), typer.Argument()]"
+tests\test_ambiguous_params.py,cmd,my_param,"Annotated[str, ""someval"", typer.Argument(), 4]"
+tests\test_ambiguous_params.py,cmd,my_param,"Annotated[str, param(default_factory=make_string)]"
+tests\test_ambiguous_params.py,cmd,my_param,str
+tests\test_ambiguous_params.py,cmd,my_param,str
+tests\test_annotated.py,cmd,val,"Annotated[int, typer.Argument()]"
+tests\test_annotated.py,cmd,val,"""Annotated[int, typer.Argument()]"""
+tests\test_annotated.py,cmd,val,"Annotated[str, typer.Argument(default_factory=make_string)]"
+tests\test_annotated.py,cmd,force,"Annotated[bool, typer.Option(""--force"")]"
+tests\test_annotated.py,custom_parser,my_path,"Annotated[CustomPath, typer.Argument(parser=CustomPath)]"
+tests\test_corner_cases.py,test_hidden_option_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\test_deprecation.py,cmd,opt,Optional[float]
+tests\test_future_annotations.py,cmd,force,"Annotated[bool, typer.Option(""--force"")]"
+tests\test_launch.py,test_launch_url_unix,system,str
+tests\test_launch.py,test_launch_url_unix,command,str
+tests\test_others.py,custom_parser,return,int
+tests\test_others.py,custom_parser,value,str
+tests\test_others.py,convert,return,typing.Any
+tests\test_others.py,convert,value,str
+tests\test_others.py,convert,param,typing.Optional[click.Parameter]
+tests\test_others.py,convert,ctx,typing.Optional[click.Context]
+tests\test_others.py,custom_parser,return,int
+tests\test_others.py,custom_parser,value,str
+tests\test_others.py,convert,return,typing.Any
+tests\test_others.py,convert,value,str
+tests\test_others.py,convert,param,typing.Optional[click.Parameter]
+tests\test_others.py,convert,ctx,typing.Optional[click.Context]
+tests\test_others.py,main,name,str
+tests\test_others.py,main,name,str
+tests\test_others.py,main,name,str
+tests\test_others.py,names_callback,values,typing.Optional[list[str]]
+tests\test_others.py,main,names,typing.Optional[list[str]]
+tests\test_others.py,empty_list,return,list[str]
+tests\test_others.py,main,names,"Annotated[list[str], typer.Option(default_factory=empty_list)]"
+tests\test_others.py,main,name,str
+tests\test_others.py,main,arg2,int
+tests\test_others.py,main,arg3,"""int"""
+tests\test_others.py,main,arg4,bool
+tests\test_others.py,main,arg5,"""bool"""
+tests\test_others.py,main,name,str
+tests\test_param_meta_empty.py,__eq__,return,bool
+tests\test_param_meta_empty.py,__ne__,return,bool
+tests\test_param_meta_empty.py,__ne__,other,object
+tests\test_rich_markup_mode.py,main,arg,str
+tests\test_rich_markup_mode.py,main,arg,str
+tests\test_rich_markup_mode.py,test_markup_mode_newline_pr815,mode,str
+tests\test_rich_markup_mode.py,test_markup_mode_newline_pr815,lines,list[str]
+tests\test_rich_markup_mode.py,main,arg,str
+tests\test_rich_markup_mode.py,test_markup_mode_newline_issue447,mode,str
+tests\test_rich_markup_mode.py,test_markup_mode_newline_issue447,lines,list[str]
+tests\test_rich_markup_mode.py,main,arg,str
+tests\test_rich_markup_mode.py,test_markup_mode_newline_mixed,mode,str
+tests\test_rich_markup_mode.py,test_markup_mode_newline_mixed,lines,list[str]
+tests\test_rich_markup_mode.py,main,arg,str
+tests\test_rich_markup_mode.py,test_markup_mode_bullets_single_newline,mode,str
+tests\test_rich_markup_mode.py,test_markup_mode_bullets_single_newline,lines,list[str]
+tests\test_rich_markup_mode.py,main,arg,str
+tests\test_rich_markup_mode.py,test_markup_mode_bullets_double_newline,mode,str
+tests\test_rich_markup_mode.py,test_markup_mode_bullets_double_newline,lines,list[str]
+tests\test_rich_markup_mode.py,main,arg,str
+tests\test_rich_utils.py,main,return,None
+tests\test_rich_utils.py,main,name,str
+tests\test_rich_utils.py,main,option_1,str
+tests\test_rich_utils.py,main,option_2,str
+tests\test_rich_utils.py,main,bar,str
+tests\test_types.py,hello,return,None
+tests\test_types.py,hello,name,User
+tests\test_types.py,test_enum_choice,return,None
+tests\test_type_conversion.py,opt,user,Optional[str]
+tests\test_type_conversion.py,opt,user,str | None
+tests\test_type_conversion.py,opt,number,"Optional[tuple[int, int]]"
+tests\test_type_conversion.py,list_conversion,container,type_annotation
+tests\test_type_conversion.py,tuple_recursive_conversion,container,type_annotation
+tests\test_type_conversion.py,custom_parser,hex_value,int
+tests\test_type_conversion.py,convert,return,Any
+tests\test_type_conversion.py,convert,value,Any
+tests\test_type_conversion.py,convert,param,Optional[click.Parameter]
+tests\test_type_conversion.py,convert,ctx,Optional[click.Context]
+tests\test_type_conversion.py,custom_click_type,hex_value,int
+tests\utils.py,strip_double_spaces,return,str
+tests\utils.py,strip_double_spaces,text,str
+tests\utils.py,normalize_rich_output,return,str
+tests\utils.py,normalize_rich_output,text,str
+tests\utils.py,normalize_rich_output,replace_with,str
+tests\utils.py,normalize_rich_output,squash_whitespaces,bool
+typer\cli.py,__init__,return,None
+typer\cli.py,maybe_update_state,return,None
+typer\cli.py,maybe_update_state,ctx,click.Context
+typer\cli.py,list_commands,return,list[str]
+typer\cli.py,list_commands,ctx,click.Context
+typer\cli.py,get_command,return,Optional[Command]
+typer\cli.py,get_command,ctx,click.Context
+typer\cli.py,get_command,name,str
+typer\cli.py,invoke,return,Any
+typer\cli.py,invoke,ctx,click.Context
+typer\cli.py,maybe_add_run,return,None
+typer\cli.py,maybe_add_run,ctx,click.Context
+typer\cli.py,get_typer_from_module,return,Optional[typer.Typer]
+typer\cli.py,get_typer_from_module,module,Any
+typer\cli.py,get_typer_from_state,return,Optional[typer.Typer]
+typer\cli.py,maybe_add_run_to_cli,return,None
+typer\cli.py,maybe_add_run_to_cli,cli,click.Group
+typer\cli.py,print_version,return,None
+typer\cli.py,print_version,ctx,click.Context
+typer\cli.py,print_version,param,Option
+typer\cli.py,print_version,value,bool
+typer\cli.py,callback,return,None
+typer\cli.py,callback,ctx,typer.Context
+typer\cli.py,callback,path_or_module,str
+typer\cli.py,callback,app,str
+typer\cli.py,callback,func,str
+typer\cli.py,callback,version,bool
+typer\cli.py,get_docs_for_click,return,str
+typer\cli.py,get_docs_for_click,obj,Command
+typer\cli.py,get_docs_for_click,ctx,typer.Context
+typer\cli.py,get_docs_for_click,indent,int
+typer\cli.py,get_docs_for_click,name,str
+typer\cli.py,get_docs_for_click,call_prefix,str
+typer\cli.py,get_docs_for_click,title,Optional[str]
+typer\cli.py,_parse_html,return,str
+typer\cli.py,_parse_html,to_parse,bool
+typer\cli.py,_parse_html,input_text,str
+typer\cli.py,docs,return,None
+typer\cli.py,docs,ctx,typer.Context
+typer\cli.py,docs,name,str
+typer\cli.py,docs,output,Optional[Path]
+typer\cli.py,docs,title,Optional[str]
+typer\cli.py,main,return,Any
+typer\completion.py,get_completion_inspect_parameters,return,"tuple[ParamMeta, ParamMeta]"
+typer\completion.py,install_callback,return,Any
+typer\completion.py,install_callback,ctx,click.Context
+typer\completion.py,install_callback,param,click.Parameter
+typer\completion.py,install_callback,value,Any
+typer\completion.py,show_callback,return,Any
+typer\completion.py,show_callback,ctx,click.Context
+typer\completion.py,show_callback,param,click.Parameter
+typer\completion.py,show_callback,value,Any
+typer\completion.py,_install_completion_placeholder_function,return,Any
+typer\completion.py,_install_completion_placeholder_function,install_completion,bool
+typer\completion.py,_install_completion_placeholder_function,show_completion,bool
+typer\completion.py,_install_completion_no_auto_placeholder_function,return,Any
+typer\completion.py,_install_completion_no_auto_placeholder_function,install_completion,Shells
+typer\completion.py,_install_completion_no_auto_placeholder_function,show_completion,Shells
+typer\completion.py,shell_complete,return,int
+typer\completion.py,shell_complete,cli,click.Command
+typer\completion.py,shell_complete,ctx_args,"MutableMapping[str, Any]"
+typer\completion.py,shell_complete,prog_name,str
+typer\completion.py,shell_complete,complete_var,str
+typer\completion.py,shell_complete,instruction,str
+typer\core.py,_split_opt,return,"tuple[str, str]"
+typer\core.py,_split_opt,opt,str
+typer\core.py,_typer_param_setup_autocompletion_compat,return,None
+typer\core.py,_typer_param_setup_autocompletion_compat,self,click.Parameter
+typer\core.py,_typer_param_setup_autocompletion_compat,autocompletion,"Optional[
+        Callable[[click.Context, list[str], str], list[Union[tuple[str, str], str]]]
+    ]"
+typer\core.py,compat_autocompletion,return,"list[""click.shell_completion.CompletionItem""]"
+typer\core.py,compat_autocompletion,ctx,click.Context
+typer\core.py,compat_autocompletion,param,click.core.Parameter
+typer\core.py,compat_autocompletion,incomplete,str
+typer\core.py,_get_default_string,return,str
+typer\core.py,_get_default_string,obj,"Union[""TyperArgument"", ""TyperOption""]"
+typer\core.py,_get_default_string,ctx,click.Context
+typer\core.py,_get_default_string,show_default_is_str,bool
+typer\core.py,_get_default_string,default_value,"Union[list[Any], tuple[Any, ...], str, Callable[..., Any], Any]"
+typer\core.py,_extract_default_help_str,return,"Optional[Union[Any, Callable[[], Any]]]"
+typer\core.py,_extract_default_help_str,obj,"Union[""TyperArgument"", ""TyperOption""]"
+typer\core.py,_extract_default_help_str,ctx,click.Context
+typer\core.py,_main,return,Any
+typer\core.py,_main,self,click.Command
+typer\core.py,_main,args,Optional[Sequence[str]]
+typer\core.py,_main,prog_name,Optional[str]
+typer\core.py,_main,complete_var,Optional[str]
+typer\core.py,_main,standalone_mode,bool
+typer\core.py,_main,windows_expand_args,bool
+typer\core.py,_main,rich_markup_mode,MarkupMode
+typer\core.py,_main,extra,Any
+typer\core.py,__init__,param_decls,list[str]
+typer\core.py,__init__,type,Optional[Any]
+typer\core.py,__init__,required,Optional[bool]
+typer\core.py,__init__,default,Optional[Any]
+typer\core.py,__init__,callback,"Optional[Callable[..., Any]]"
+typer\core.py,__init__,nargs,Optional[int]
+typer\core.py,__init__,metavar,Optional[str]
+typer\core.py,__init__,expose_value,bool
+typer\core.py,__init__,is_eager,bool
+typer\core.py,__init__,envvar,"Optional[Union[str, list[str]]]"
+typer\core.py,__init__,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\core.py,__init__,autocompletion,"Optional[Callable[..., Any]]"
+typer\core.py,__init__,show_default,"Union[bool, str]"
+typer\core.py,__init__,show_choices,bool
+typer\core.py,__init__,show_envvar,bool
+typer\core.py,__init__,help,Optional[str]
+typer\core.py,__init__,hidden,bool
+typer\core.py,__init__,rich_help_panel,"Union[str, None]"
+typer\core.py,_get_default_string,return,str
+typer\core.py,_get_default_string,ctx,click.Context
+typer\core.py,_get_default_string,show_default_is_str,bool
+typer\core.py,_get_default_string,default_value,"Union[list[Any], tuple[Any, ...], str, Callable[..., Any], Any]"
+typer\core.py,_extract_default_help_str,return,"Optional[Union[Any, Callable[[], Any]]]"
+typer\core.py,_extract_default_help_str,ctx,click.Context
+typer\core.py,get_help_record,return,"Optional[tuple[str, str]]"
+typer\core.py,get_help_record,ctx,click.Context
+typer\core.py,make_metavar,return,str
+typer\core.py,make_metavar,ctx,"Union[click.Context, None]"
+typer\core.py,value_is_missing,return,bool
+typer\core.py,value_is_missing,value,Any
+typer\core.py,__init__,param_decls,list[str]
+typer\core.py,__init__,type,"Optional[Union[click.types.ParamType, Any]]"
+typer\core.py,__init__,required,Optional[bool]
+typer\core.py,__init__,default,Optional[Any]
+typer\core.py,__init__,callback,"Optional[Callable[..., Any]]"
+typer\core.py,__init__,nargs,Optional[int]
+typer\core.py,__init__,metavar,Optional[str]
+typer\core.py,__init__,expose_value,bool
+typer\core.py,__init__,is_eager,bool
+typer\core.py,__init__,envvar,"Optional[Union[str, list[str]]]"
+typer\core.py,__init__,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\core.py,__init__,autocompletion,"Optional[Callable[..., Any]]"
+typer\core.py,__init__,show_default,"Union[bool, str]"
+typer\core.py,__init__,prompt,"Union[bool, str]"
+typer\core.py,__init__,confirmation_prompt,"Union[bool, str]"
+typer\core.py,__init__,prompt_required,bool
+typer\core.py,__init__,hide_input,bool
+typer\core.py,__init__,is_flag,Optional[bool]
+typer\core.py,__init__,multiple,bool
+typer\core.py,__init__,count,bool
+typer\core.py,__init__,allow_from_autoenv,bool
+typer\core.py,__init__,help,Optional[str]
+typer\core.py,__init__,hidden,bool
+typer\core.py,__init__,show_choices,bool
+typer\core.py,__init__,show_envvar,bool
+typer\core.py,__init__,rich_help_panel,"Union[str, None]"
+typer\core.py,_get_default_string,return,str
+typer\core.py,_get_default_string,ctx,click.Context
+typer\core.py,_get_default_string,show_default_is_str,bool
+typer\core.py,_get_default_string,default_value,"Union[list[Any], tuple[Any, ...], str, Callable[..., Any], Any]"
+typer\core.py,_extract_default_help_str,return,"Optional[Union[Any, Callable[[], Any]]]"
+typer\core.py,_extract_default_help_str,ctx,click.Context
+typer\core.py,make_metavar,return,str
+typer\core.py,make_metavar,ctx,"Union[click.Context, None]"
+typer\core.py,get_help_record,return,"Optional[tuple[str, str]]"
+typer\core.py,get_help_record,ctx,click.Context
+typer\core.py,_write_opts,return,str
+typer\core.py,_write_opts,opts,Sequence[str]
+typer\core.py,value_is_missing,return,bool
+typer\core.py,value_is_missing,value,Any
+typer\core.py,_value_is_missing,return,bool
+typer\core.py,_value_is_missing,param,click.Parameter
+typer\core.py,_value_is_missing,value,Any
+typer\core.py,_typer_format_options,return,None
+typer\core.py,_typer_format_options,self,click.core.Command
+typer\core.py,_typer_format_options,ctx,click.Context
+typer\core.py,_typer_format_options,formatter,click.HelpFormatter
+typer\core.py,_typer_main_shell_completion,return,None
+typer\core.py,_typer_main_shell_completion,self,click.core.Command
+typer\core.py,_typer_main_shell_completion,ctx_args,"MutableMapping[str, Any]"
+typer\core.py,_typer_main_shell_completion,prog_name,str
+typer\core.py,_typer_main_shell_completion,complete_var,Optional[str]
+typer\core.py,__init__,return,None
+typer\core.py,__init__,name,Optional[str]
+typer\core.py,__init__,context_settings,"Optional[dict[str, Any]]"
+typer\core.py,__init__,callback,"Optional[Callable[..., Any]]"
+typer\core.py,__init__,params,Optional[list[click.Parameter]]
+typer\core.py,__init__,help,Optional[str]
+typer\core.py,__init__,epilog,Optional[str]
+typer\core.py,__init__,short_help,Optional[str]
+typer\core.py,__init__,options_metavar,Optional[str]
+typer\core.py,__init__,add_help_option,bool
+typer\core.py,__init__,no_args_is_help,bool
+typer\core.py,__init__,hidden,bool
+typer\core.py,__init__,deprecated,bool
+typer\core.py,__init__,rich_markup_mode,MarkupMode
+typer\core.py,__init__,rich_help_panel,"Union[str, None]"
+typer\core.py,format_options,return,None
+typer\core.py,format_options,ctx,click.Context
+typer\core.py,format_options,formatter,click.HelpFormatter
+typer\core.py,_main_shell_completion,return,None
+typer\core.py,_main_shell_completion,ctx_args,"MutableMapping[str, Any]"
+typer\core.py,_main_shell_completion,prog_name,str
+typer\core.py,_main_shell_completion,complete_var,Optional[str]
+typer\core.py,main,return,Any
+typer\core.py,main,args,Optional[Sequence[str]]
+typer\core.py,main,prog_name,Optional[str]
+typer\core.py,main,complete_var,Optional[str]
+typer\core.py,main,standalone_mode,bool
+typer\core.py,main,windows_expand_args,bool
+typer\core.py,main,extra,Any
+typer\core.py,format_help,return,None
+typer\core.py,format_help,ctx,click.Context
+typer\core.py,format_help,formatter,click.HelpFormatter
+typer\core.py,__init__,return,None
+typer\core.py,__init__,name,Optional[str]
+typer\core.py,__init__,commands,"Optional[
+        Union[dict[str, click.Command], Sequence[click.Command]]
+    ]"
+typer\core.py,__init__,rich_markup_mode,MarkupMode
+typer\core.py,__init__,rich_help_panel,"Union[str, None]"
+typer\core.py,__init__,suggest_commands,bool
+typer\core.py,__init__,attrs,Any
+typer\core.py,format_options,return,None
+typer\core.py,format_options,ctx,click.Context
+typer\core.py,format_options,formatter,click.HelpFormatter
+typer\core.py,_main_shell_completion,return,None
+typer\core.py,_main_shell_completion,ctx_args,"MutableMapping[str, Any]"
+typer\core.py,_main_shell_completion,prog_name,str
+typer\core.py,_main_shell_completion,complete_var,Optional[str]
+typer\core.py,resolve_command,return,"tuple[Optional[str], Optional[click.Command], list[str]]"
+typer\core.py,resolve_command,ctx,click.Context
+typer\core.py,resolve_command,args,list[str]
+typer\core.py,main,return,Any
+typer\core.py,main,args,Optional[Sequence[str]]
+typer\core.py,main,prog_name,Optional[str]
+typer\core.py,main,complete_var,Optional[str]
+typer\core.py,main,standalone_mode,bool
+typer\core.py,main,windows_expand_args,bool
+typer\core.py,main,extra,Any
+typer\core.py,format_help,return,None
+typer\core.py,format_help,ctx,click.Context
+typer\core.py,format_help,formatter,click.HelpFormatter
+typer\core.py,list_commands,return,list[str]
+typer\core.py,list_commands,ctx,click.Context
+typer\main.py,except_hook,return,None
+typer\main.py,except_hook,exc_type,type[BaseException]
+typer\main.py,except_hook,exc_value,BaseException
+typer\main.py,except_hook,tb,Optional[TracebackType]
+typer\main.py,get_install_completion_arguments,return,"tuple[click.Parameter, click.Parameter]"
+typer\main.py,__init__,name,Optional[str]
+typer\main.py,__init__,cls,Optional[type[TyperGroup]]
+typer\main.py,__init__,invoke_without_command,bool
+typer\main.py,__init__,no_args_is_help,bool
+typer\main.py,__init__,subcommand_metavar,Optional[str]
+typer\main.py,__init__,chain,bool
+typer\main.py,__init__,result_callback,"Optional[Callable[..., Any]]"
+typer\main.py,__init__,context_settings,"Optional[dict[Any, Any]]"
+typer\main.py,__init__,callback,"Optional[Callable[..., Any]]"
+typer\main.py,__init__,help,Optional[str]
+typer\main.py,__init__,epilog,Optional[str]
+typer\main.py,__init__,short_help,Optional[str]
+typer\main.py,__init__,options_metavar,str
+typer\main.py,__init__,add_help_option,bool
+typer\main.py,__init__,hidden,bool
+typer\main.py,__init__,deprecated,bool
+typer\main.py,__init__,add_completion,bool
+typer\main.py,__init__,rich_markup_mode,MarkupMode
+typer\main.py,__init__,rich_help_panel,"Union[str, None]"
+typer\main.py,__init__,suggest_commands,bool
+typer\main.py,__init__,pretty_exceptions_enable,bool
+typer\main.py,__init__,pretty_exceptions_show_locals,bool
+typer\main.py,__init__,pretty_exceptions_short,bool
+typer\main.py,callback,return,"Callable[[CommandFunctionType], CommandFunctionType]"
+typer\main.py,callback,cls,Optional[type[TyperGroup]]
+typer\main.py,callback,invoke_without_command,bool
+typer\main.py,callback,no_args_is_help,bool
+typer\main.py,callback,subcommand_metavar,Optional[str]
+typer\main.py,callback,chain,bool
+typer\main.py,callback,result_callback,"Optional[Callable[..., Any]]"
+typer\main.py,callback,context_settings,"Optional[dict[Any, Any]]"
+typer\main.py,callback,help,Optional[str]
+typer\main.py,callback,epilog,Optional[str]
+typer\main.py,callback,short_help,Optional[str]
+typer\main.py,callback,options_metavar,Optional[str]
+typer\main.py,callback,add_help_option,bool
+typer\main.py,callback,hidden,bool
+typer\main.py,callback,deprecated,bool
+typer\main.py,callback,rich_help_panel,"Union[str, None]"
+typer\main.py,decorator,return,CommandFunctionType
+typer\main.py,decorator,f,CommandFunctionType
+typer\main.py,command,return,"Callable[[CommandFunctionType], CommandFunctionType]"
+typer\main.py,command,name,Optional[str]
+typer\main.py,command,cls,Optional[type[TyperCommand]]
+typer\main.py,command,context_settings,"Optional[dict[Any, Any]]"
+typer\main.py,command,help,Optional[str]
+typer\main.py,command,epilog,Optional[str]
+typer\main.py,command,short_help,Optional[str]
+typer\main.py,command,options_metavar,Optional[str]
+typer\main.py,command,add_help_option,bool
+typer\main.py,command,no_args_is_help,bool
+typer\main.py,command,hidden,bool
+typer\main.py,command,deprecated,bool
+typer\main.py,command,rich_help_panel,"Union[str, None]"
+typer\main.py,decorator,return,CommandFunctionType
+typer\main.py,decorator,f,CommandFunctionType
+typer\main.py,add_typer,return,None
+typer\main.py,add_typer,typer_instance,"""Typer"""
+typer\main.py,add_typer,name,Optional[str]
+typer\main.py,add_typer,cls,Optional[type[TyperGroup]]
+typer\main.py,add_typer,invoke_without_command,bool
+typer\main.py,add_typer,no_args_is_help,bool
+typer\main.py,add_typer,subcommand_metavar,Optional[str]
+typer\main.py,add_typer,chain,bool
+typer\main.py,add_typer,result_callback,"Optional[Callable[..., Any]]"
+typer\main.py,add_typer,context_settings,"Optional[dict[Any, Any]]"
+typer\main.py,add_typer,callback,"Optional[Callable[..., Any]]"
+typer\main.py,add_typer,help,Optional[str]
+typer\main.py,add_typer,epilog,Optional[str]
+typer\main.py,add_typer,short_help,Optional[str]
+typer\main.py,add_typer,options_metavar,Optional[str]
+typer\main.py,add_typer,add_help_option,bool
+typer\main.py,add_typer,hidden,bool
+typer\main.py,add_typer,deprecated,bool
+typer\main.py,add_typer,rich_help_panel,"Union[str, None]"
+typer\main.py,__call__,return,Any
+typer\main.py,__call__,args,Any
+typer\main.py,__call__,kwargs,Any
+typer\main.py,_info_val_str,return,str
+typer\main.py,_info_val_str,name,str
+typer\main.py,get_group,return,TyperGroup
+typer\main.py,get_group,typer_instance,Typer
+typer\main.py,get_command,return,click.Command
+typer\main.py,get_command,typer_instance,Typer
+typer\main.py,solve_typer_info_help,return,str
+typer\main.py,solve_typer_info_help,typer_info,TyperInfo
+typer\main.py,solve_typer_info_defaults,return,TyperInfo
+typer\main.py,solve_typer_info_defaults,typer_info,TyperInfo
+typer\main.py,get_group_from_info,return,TyperGroup
+typer\main.py,get_group_from_info,group_info,TyperInfo
+typer\main.py,get_group_from_info,pretty_exceptions_short,bool
+typer\main.py,get_group_from_info,suggest_commands,bool
+typer\main.py,get_group_from_info,rich_markup_mode,MarkupMode
+typer\main.py,get_command_name,return,str
+typer\main.py,get_command_name,name,str
+typer\main.py,get_params_convertors_ctx_param_name_from_function,return,"tuple[list[Union[click.Argument, click.Option]], dict[str, Any], Optional[str]]"
+typer\main.py,get_params_convertors_ctx_param_name_from_function,callback,"Optional[Callable[..., Any]]"
+typer\main.py,get_command_from_info,return,click.Command
+typer\main.py,get_command_from_info,command_info,CommandInfo
+typer\main.py,get_command_from_info,pretty_exceptions_short,bool
+typer\main.py,get_command_from_info,rich_markup_mode,MarkupMode
+typer\main.py,determine_type_convertor,return,"Optional[Callable[[Any], Any]]"
+typer\main.py,determine_type_convertor,type_,Any
+typer\main.py,param_path_convertor,return,Optional[Path]
+typer\main.py,param_path_convertor,value,Optional[str]
+typer\main.py,generate_enum_convertor,return,"Callable[[Any], Any]"
+typer\main.py,generate_enum_convertor,enum,type[Enum]
+typer\main.py,convertor,return,Any
+typer\main.py,convertor,value,Any
+typer\main.py,generate_list_convertor,return,"Callable[[Optional[Sequence[Any]]], Optional[list[Any]]]"
+typer\main.py,generate_list_convertor,convertor,"Optional[Callable[[Any], Any]]"
+typer\main.py,generate_list_convertor,default_value,Optional[Any]
+typer\main.py,internal_convertor,return,Optional[list[Any]]
+typer\main.py,internal_convertor,value,Optional[Sequence[Any]]
+typer\main.py,generate_tuple_convertor,return,"Callable[[Optional[tuple[Any, ...]]], Optional[tuple[Any, ...]]]"
+typer\main.py,generate_tuple_convertor,types,Sequence[Any]
+typer\main.py,internal_convertor,return,"Optional[tuple[Any, ...]]"
+typer\main.py,internal_convertor,param_args,"Optional[tuple[Any, ...]]"
+typer\main.py,get_callback,return,"Optional[Callable[..., Any]]"
+typer\main.py,get_callback,callback,"Optional[Callable[..., Any]]"
+typer\main.py,get_callback,params,Sequence[click.Parameter]
+typer\main.py,get_callback,convertors,"Optional[dict[str, Callable[[str], Any]]]"
+typer\main.py,get_callback,context_param_name,Optional[str]
+typer\main.py,get_callback,pretty_exceptions_short,bool
+typer\main.py,wrapper,return,Any
+typer\main.py,wrapper,kwargs,Any
+typer\main.py,get_click_type,return,click.ParamType
+typer\main.py,get_click_type,annotation,Any
+typer\main.py,get_click_type,parameter_info,ParameterInfo
+typer\main.py,lenient_issubclass,return,bool
+typer\main.py,lenient_issubclass,cls,Any
+typer\main.py,lenient_issubclass,class_or_tuple,"Union[AnyType, tuple[AnyType, ...]]"
+typer\main.py,get_click_param,return,"tuple[Union[click.Argument, click.Option], Any]"
+typer\main.py,get_click_param,param,ParamMeta
+typer\main.py,get_param_callback,return,"Optional[Callable[..., Any]]"
+typer\main.py,get_param_callback,callback,"Optional[Callable[..., Any]]"
+typer\main.py,get_param_callback,convertor,"Optional[Callable[..., Any]]"
+typer\main.py,wrapper,return,Any
+typer\main.py,wrapper,ctx,click.Context
+typer\main.py,wrapper,param,click.Parameter
+typer\main.py,wrapper,value,Any
+typer\main.py,get_param_completion,return,"Optional[Callable[..., Any]]"
+typer\main.py,get_param_completion,callback,"Optional[Callable[..., Any]]"
+typer\main.py,wrapper,return,Any
+typer\main.py,wrapper,ctx,click.Context
+typer\main.py,wrapper,args,list[str]
+typer\main.py,wrapper,incomplete,Optional[str]
+typer\main.py,run,return,None
+typer\main.py,run,function,"Callable[..., Any]"
+typer\main.py,_is_macos,return,bool
+typer\main.py,_is_linux_or_bsd,return,bool
+typer\main.py,launch,return,int
+typer\main.py,launch,url,str
+typer\main.py,launch,wait,bool
+typer\main.py,launch,locate,bool
+typer\models.py,__init__,value,Any
+typer\models.py,__bool__,return,bool
+typer\models.py,Default,return,DefaultType
+typer\models.py,Default,value,DefaultType
+typer\models.py,__init__,name,Optional[str]
+typer\models.py,__init__,cls,"Optional[type[""TyperCommand""]]"
+typer\models.py,__init__,context_settings,"Optional[dict[Any, Any]]"
+typer\models.py,__init__,callback,"Optional[Callable[..., Any]]"
+typer\models.py,__init__,help,Optional[str]
+typer\models.py,__init__,epilog,Optional[str]
+typer\models.py,__init__,short_help,Optional[str]
+typer\models.py,__init__,options_metavar,str
+typer\models.py,__init__,add_help_option,bool
+typer\models.py,__init__,no_args_is_help,bool
+typer\models.py,__init__,hidden,bool
+typer\models.py,__init__,deprecated,bool
+typer\models.py,__init__,rich_help_panel,"Union[str, None]"
+typer\models.py,__init__,typer_instance,"Optional[""Typer""]"
+typer\models.py,__init__,name,Optional[str]
+typer\models.py,__init__,cls,"Optional[type[""TyperGroup""]]"
+typer\models.py,__init__,invoke_without_command,bool
+typer\models.py,__init__,no_args_is_help,bool
+typer\models.py,__init__,subcommand_metavar,Optional[str]
+typer\models.py,__init__,chain,bool
+typer\models.py,__init__,result_callback,"Optional[Callable[..., Any]]"
+typer\models.py,__init__,context_settings,"Optional[dict[Any, Any]]"
+typer\models.py,__init__,callback,"Optional[Callable[..., Any]]"
+typer\models.py,__init__,help,Optional[str]
+typer\models.py,__init__,epilog,Optional[str]
+typer\models.py,__init__,short_help,Optional[str]
+typer\models.py,__init__,options_metavar,str
+typer\models.py,__init__,add_help_option,bool
+typer\models.py,__init__,hidden,bool
+typer\models.py,__init__,deprecated,bool
+typer\models.py,__init__,rich_help_panel,"Union[str, None]"
+typer\models.py,__init__,default,Optional[Any]
+typer\models.py,__init__,param_decls,Optional[Sequence[str]]
+typer\models.py,__init__,callback,"Optional[Callable[..., Any]]"
+typer\models.py,__init__,metavar,Optional[str]
+typer\models.py,__init__,expose_value,bool
+typer\models.py,__init__,is_eager,bool
+typer\models.py,__init__,envvar,"Optional[Union[str, list[str]]]"
+typer\models.py,__init__,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\models.py,__init__,autocompletion,"Optional[Callable[..., Any]]"
+typer\models.py,__init__,default_factory,"Optional[Callable[[], Any]]"
+typer\models.py,__init__,parser,"Optional[Callable[[str], Any]]"
+typer\models.py,__init__,click_type,Optional[click.ParamType]
+typer\models.py,__init__,show_default,"Union[bool, str]"
+typer\models.py,__init__,show_choices,bool
+typer\models.py,__init__,show_envvar,bool
+typer\models.py,__init__,help,Optional[str]
+typer\models.py,__init__,hidden,bool
+typer\models.py,__init__,case_sensitive,bool
+typer\models.py,__init__,min,"Optional[Union[int, float]]"
+typer\models.py,__init__,max,"Optional[Union[int, float]]"
+typer\models.py,__init__,clamp,bool
+typer\models.py,__init__,formats,Optional[list[str]]
+typer\models.py,__init__,mode,Optional[str]
+typer\models.py,__init__,encoding,Optional[str]
+typer\models.py,__init__,errors,Optional[str]
+typer\models.py,__init__,lazy,Optional[bool]
+typer\models.py,__init__,atomic,bool
+typer\models.py,__init__,exists,bool
+typer\models.py,__init__,file_okay,bool
+typer\models.py,__init__,dir_okay,bool
+typer\models.py,__init__,writable,bool
+typer\models.py,__init__,readable,bool
+typer\models.py,__init__,resolve_path,bool
+typer\models.py,__init__,allow_dash,bool
+typer\models.py,__init__,path_type,"Union[None, type[str], type[bytes]]"
+typer\models.py,__init__,rich_help_panel,"Union[str, None]"
+typer\models.py,__init__,default,Optional[Any]
+typer\models.py,__init__,param_decls,Optional[Sequence[str]]
+typer\models.py,__init__,callback,"Optional[Callable[..., Any]]"
+typer\models.py,__init__,metavar,Optional[str]
+typer\models.py,__init__,expose_value,bool
+typer\models.py,__init__,is_eager,bool
+typer\models.py,__init__,envvar,"Optional[Union[str, list[str]]]"
+typer\models.py,__init__,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\models.py,__init__,autocompletion,"Optional[Callable[..., Any]]"
+typer\models.py,__init__,default_factory,"Optional[Callable[[], Any]]"
+typer\models.py,__init__,parser,"Optional[Callable[[str], Any]]"
+typer\models.py,__init__,click_type,Optional[click.ParamType]
+typer\models.py,__init__,show_default,"Union[bool, str]"
+typer\models.py,__init__,prompt,"Union[bool, str]"
+typer\models.py,__init__,confirmation_prompt,bool
+typer\models.py,__init__,prompt_required,bool
+typer\models.py,__init__,hide_input,bool
+typer\models.py,__init__,is_flag,Optional[bool]
+typer\models.py,__init__,flag_value,Optional[Any]
+typer\models.py,__init__,count,bool
+typer\models.py,__init__,allow_from_autoenv,bool
+typer\models.py,__init__,help,Optional[str]
+typer\models.py,__init__,hidden,bool
+typer\models.py,__init__,show_choices,bool
+typer\models.py,__init__,show_envvar,bool
+typer\models.py,__init__,case_sensitive,bool
+typer\models.py,__init__,min,"Optional[Union[int, float]]"
+typer\models.py,__init__,max,"Optional[Union[int, float]]"
+typer\models.py,__init__,clamp,bool
+typer\models.py,__init__,formats,Optional[list[str]]
+typer\models.py,__init__,mode,Optional[str]
+typer\models.py,__init__,encoding,Optional[str]
+typer\models.py,__init__,errors,Optional[str]
+typer\models.py,__init__,lazy,Optional[bool]
+typer\models.py,__init__,atomic,bool
+typer\models.py,__init__,exists,bool
+typer\models.py,__init__,file_okay,bool
+typer\models.py,__init__,dir_okay,bool
+typer\models.py,__init__,writable,bool
+typer\models.py,__init__,readable,bool
+typer\models.py,__init__,resolve_path,bool
+typer\models.py,__init__,allow_dash,bool
+typer\models.py,__init__,path_type,"Union[None, type[str], type[bytes]]"
+typer\models.py,__init__,rich_help_panel,"Union[str, None]"
+typer\models.py,__init__,default,Optional[Any]
+typer\models.py,__init__,param_decls,Optional[Sequence[str]]
+typer\models.py,__init__,callback,"Optional[Callable[..., Any]]"
+typer\models.py,__init__,metavar,Optional[str]
+typer\models.py,__init__,expose_value,bool
+typer\models.py,__init__,is_eager,bool
+typer\models.py,__init__,envvar,"Optional[Union[str, list[str]]]"
+typer\models.py,__init__,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\models.py,__init__,autocompletion,"Optional[Callable[..., Any]]"
+typer\models.py,__init__,default_factory,"Optional[Callable[[], Any]]"
+typer\models.py,__init__,parser,"Optional[Callable[[str], Any]]"
+typer\models.py,__init__,click_type,Optional[click.ParamType]
+typer\models.py,__init__,show_default,"Union[bool, str]"
+typer\models.py,__init__,show_choices,bool
+typer\models.py,__init__,show_envvar,bool
+typer\models.py,__init__,help,Optional[str]
+typer\models.py,__init__,hidden,bool
+typer\models.py,__init__,case_sensitive,bool
+typer\models.py,__init__,min,"Optional[Union[int, float]]"
+typer\models.py,__init__,max,"Optional[Union[int, float]]"
+typer\models.py,__init__,clamp,bool
+typer\models.py,__init__,formats,Optional[list[str]]
+typer\models.py,__init__,mode,Optional[str]
+typer\models.py,__init__,encoding,Optional[str]
+typer\models.py,__init__,errors,Optional[str]
+typer\models.py,__init__,lazy,Optional[bool]
+typer\models.py,__init__,atomic,bool
+typer\models.py,__init__,exists,bool
+typer\models.py,__init__,file_okay,bool
+typer\models.py,__init__,dir_okay,bool
+typer\models.py,__init__,writable,bool
+typer\models.py,__init__,readable,bool
+typer\models.py,__init__,resolve_path,bool
+typer\models.py,__init__,allow_dash,bool
+typer\models.py,__init__,path_type,"Union[None, type[str], type[bytes]]"
+typer\models.py,__init__,rich_help_panel,"Union[str, None]"
+typer\models.py,__init__,return,None
+typer\models.py,__init__,name,str
+typer\models.py,__init__,default,Any
+typer\models.py,__init__,annotation,Any
+typer\models.py,__init__,return,None
+typer\models.py,__init__,pretty_exceptions_enable,bool
+typer\models.py,__init__,pretty_exceptions_show_locals,bool
+typer\models.py,__init__,pretty_exceptions_short,bool
+typer\models.py,shell_complete,return,list[click.shell_completion.CompletionItem]
+typer\models.py,shell_complete,ctx,click.Context
+typer\models.py,shell_complete,param,click.Parameter
+typer\models.py,shell_complete,incomplete,str
+typer\params.py,Option,return,Any
+typer\params.py,Option,default,Optional[Any]
+typer\params.py,Option,param_decls,str
+typer\params.py,Option,callback,"Optional[Callable[..., Any]]"
+typer\params.py,Option,metavar,Optional[str]
+typer\params.py,Option,expose_value,bool
+typer\params.py,Option,is_eager,bool
+typer\params.py,Option,envvar,"Optional[Union[str, list[str]]]"
+typer\params.py,Option,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\params.py,Option,autocompletion,"Optional[Callable[..., Any]]"
+typer\params.py,Option,default_factory,"Optional[Callable[[], Any]]"
+typer\params.py,Option,parser,"Optional[Callable[[str], Any]]"
+typer\params.py,Option,show_default,"Union[bool, str]"
+typer\params.py,Option,prompt,"Union[bool, str]"
+typer\params.py,Option,confirmation_prompt,bool
+typer\params.py,Option,prompt_required,bool
+typer\params.py,Option,hide_input,bool
+typer\params.py,Option,is_flag,Optional[bool]
+typer\params.py,Option,flag_value,Optional[Any]
+typer\params.py,Option,count,bool
+typer\params.py,Option,allow_from_autoenv,bool
+typer\params.py,Option,help,Optional[str]
+typer\params.py,Option,hidden,bool
+typer\params.py,Option,show_choices,bool
+typer\params.py,Option,show_envvar,bool
+typer\params.py,Option,case_sensitive,bool
+typer\params.py,Option,min,"Optional[Union[int, float]]"
+typer\params.py,Option,max,"Optional[Union[int, float]]"
+typer\params.py,Option,clamp,bool
+typer\params.py,Option,formats,Optional[list[str]]
+typer\params.py,Option,mode,Optional[str]
+typer\params.py,Option,encoding,Optional[str]
+typer\params.py,Option,errors,Optional[str]
+typer\params.py,Option,lazy,Optional[bool]
+typer\params.py,Option,atomic,bool
+typer\params.py,Option,exists,bool
+typer\params.py,Option,file_okay,bool
+typer\params.py,Option,dir_okay,bool
+typer\params.py,Option,writable,bool
+typer\params.py,Option,readable,bool
+typer\params.py,Option,resolve_path,bool
+typer\params.py,Option,allow_dash,bool
+typer\params.py,Option,path_type,"Union[None, type[str], type[bytes]]"
+typer\params.py,Option,rich_help_panel,"Union[str, None]"
+typer\params.py,Option,return,Any
+typer\params.py,Option,default,Optional[Any]
+typer\params.py,Option,param_decls,str
+typer\params.py,Option,callback,"Optional[Callable[..., Any]]"
+typer\params.py,Option,metavar,Optional[str]
+typer\params.py,Option,expose_value,bool
+typer\params.py,Option,is_eager,bool
+typer\params.py,Option,envvar,"Optional[Union[str, list[str]]]"
+typer\params.py,Option,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\params.py,Option,autocompletion,"Optional[Callable[..., Any]]"
+typer\params.py,Option,default_factory,"Optional[Callable[[], Any]]"
+typer\params.py,Option,click_type,Optional[click.ParamType]
+typer\params.py,Option,show_default,"Union[bool, str]"
+typer\params.py,Option,prompt,"Union[bool, str]"
+typer\params.py,Option,confirmation_prompt,bool
+typer\params.py,Option,prompt_required,bool
+typer\params.py,Option,hide_input,bool
+typer\params.py,Option,is_flag,Optional[bool]
+typer\params.py,Option,flag_value,Optional[Any]
+typer\params.py,Option,count,bool
+typer\params.py,Option,allow_from_autoenv,bool
+typer\params.py,Option,help,Optional[str]
+typer\params.py,Option,hidden,bool
+typer\params.py,Option,show_choices,bool
+typer\params.py,Option,show_envvar,bool
+typer\params.py,Option,case_sensitive,bool
+typer\params.py,Option,min,"Optional[Union[int, float]]"
+typer\params.py,Option,max,"Optional[Union[int, float]]"
+typer\params.py,Option,clamp,bool
+typer\params.py,Option,formats,Optional[list[str]]
+typer\params.py,Option,mode,Optional[str]
+typer\params.py,Option,encoding,Optional[str]
+typer\params.py,Option,errors,Optional[str]
+typer\params.py,Option,lazy,Optional[bool]
+typer\params.py,Option,atomic,bool
+typer\params.py,Option,exists,bool
+typer\params.py,Option,file_okay,bool
+typer\params.py,Option,dir_okay,bool
+typer\params.py,Option,writable,bool
+typer\params.py,Option,readable,bool
+typer\params.py,Option,resolve_path,bool
+typer\params.py,Option,allow_dash,bool
+typer\params.py,Option,path_type,"Union[None, type[str], type[bytes]]"
+typer\params.py,Option,rich_help_panel,"Union[str, None]"
+typer\params.py,Option,return,Any
+typer\params.py,Option,default,Optional[Any]
+typer\params.py,Option,param_decls,str
+typer\params.py,Option,callback,"Optional[Callable[..., Any]]"
+typer\params.py,Option,metavar,Optional[str]
+typer\params.py,Option,expose_value,bool
+typer\params.py,Option,is_eager,bool
+typer\params.py,Option,envvar,"Optional[Union[str, list[str]]]"
+typer\params.py,Option,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\params.py,Option,autocompletion,"Optional[Callable[..., Any]]"
+typer\params.py,Option,default_factory,"Optional[Callable[[], Any]]"
+typer\params.py,Option,parser,"Optional[Callable[[str], Any]]"
+typer\params.py,Option,click_type,Optional[click.ParamType]
+typer\params.py,Option,show_default,"Union[bool, str]"
+typer\params.py,Option,prompt,"Union[bool, str]"
+typer\params.py,Option,confirmation_prompt,bool
+typer\params.py,Option,prompt_required,bool
+typer\params.py,Option,hide_input,bool
+typer\params.py,Option,is_flag,Optional[bool]
+typer\params.py,Option,flag_value,Optional[Any]
+typer\params.py,Option,count,bool
+typer\params.py,Option,allow_from_autoenv,bool
+typer\params.py,Option,help,Optional[str]
+typer\params.py,Option,hidden,bool
+typer\params.py,Option,show_choices,bool
+typer\params.py,Option,show_envvar,bool
+typer\params.py,Option,case_sensitive,bool
+typer\params.py,Option,min,"Optional[Union[int, float]]"
+typer\params.py,Option,max,"Optional[Union[int, float]]"
+typer\params.py,Option,clamp,bool
+typer\params.py,Option,formats,Optional[list[str]]
+typer\params.py,Option,mode,Optional[str]
+typer\params.py,Option,encoding,Optional[str]
+typer\params.py,Option,errors,Optional[str]
+typer\params.py,Option,lazy,Optional[bool]
+typer\params.py,Option,atomic,bool
+typer\params.py,Option,exists,bool
+typer\params.py,Option,file_okay,bool
+typer\params.py,Option,dir_okay,bool
+typer\params.py,Option,writable,bool
+typer\params.py,Option,readable,bool
+typer\params.py,Option,resolve_path,bool
+typer\params.py,Option,allow_dash,bool
+typer\params.py,Option,path_type,"Union[None, type[str], type[bytes]]"
+typer\params.py,Option,rich_help_panel,"Union[str, None]"
+typer\params.py,Argument,return,Any
+typer\params.py,Argument,default,Optional[Any]
+typer\params.py,Argument,callback,"Optional[Callable[..., Any]]"
+typer\params.py,Argument,metavar,Optional[str]
+typer\params.py,Argument,expose_value,bool
+typer\params.py,Argument,is_eager,bool
+typer\params.py,Argument,envvar,"Optional[Union[str, list[str]]]"
+typer\params.py,Argument,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\params.py,Argument,autocompletion,"Optional[Callable[..., Any]]"
+typer\params.py,Argument,default_factory,"Optional[Callable[[], Any]]"
+typer\params.py,Argument,parser,"Optional[Callable[[str], Any]]"
+typer\params.py,Argument,show_default,"Union[bool, str]"
+typer\params.py,Argument,show_choices,bool
+typer\params.py,Argument,show_envvar,bool
+typer\params.py,Argument,help,Optional[str]
+typer\params.py,Argument,hidden,bool
+typer\params.py,Argument,case_sensitive,bool
+typer\params.py,Argument,min,"Optional[Union[int, float]]"
+typer\params.py,Argument,max,"Optional[Union[int, float]]"
+typer\params.py,Argument,clamp,bool
+typer\params.py,Argument,formats,Optional[list[str]]
+typer\params.py,Argument,mode,Optional[str]
+typer\params.py,Argument,encoding,Optional[str]
+typer\params.py,Argument,errors,Optional[str]
+typer\params.py,Argument,lazy,Optional[bool]
+typer\params.py,Argument,atomic,bool
+typer\params.py,Argument,exists,bool
+typer\params.py,Argument,file_okay,bool
+typer\params.py,Argument,dir_okay,bool
+typer\params.py,Argument,writable,bool
+typer\params.py,Argument,readable,bool
+typer\params.py,Argument,resolve_path,bool
+typer\params.py,Argument,allow_dash,bool
+typer\params.py,Argument,path_type,"Union[None, type[str], type[bytes]]"
+typer\params.py,Argument,rich_help_panel,"Union[str, None]"
+typer\params.py,Argument,return,Any
+typer\params.py,Argument,default,Optional[Any]
+typer\params.py,Argument,callback,"Optional[Callable[..., Any]]"
+typer\params.py,Argument,metavar,Optional[str]
+typer\params.py,Argument,expose_value,bool
+typer\params.py,Argument,is_eager,bool
+typer\params.py,Argument,envvar,"Optional[Union[str, list[str]]]"
+typer\params.py,Argument,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\params.py,Argument,autocompletion,"Optional[Callable[..., Any]]"
+typer\params.py,Argument,default_factory,"Optional[Callable[[], Any]]"
+typer\params.py,Argument,click_type,Optional[click.ParamType]
+typer\params.py,Argument,show_default,"Union[bool, str]"
+typer\params.py,Argument,show_choices,bool
+typer\params.py,Argument,show_envvar,bool
+typer\params.py,Argument,help,Optional[str]
+typer\params.py,Argument,hidden,bool
+typer\params.py,Argument,case_sensitive,bool
+typer\params.py,Argument,min,"Optional[Union[int, float]]"
+typer\params.py,Argument,max,"Optional[Union[int, float]]"
+typer\params.py,Argument,clamp,bool
+typer\params.py,Argument,formats,Optional[list[str]]
+typer\params.py,Argument,mode,Optional[str]
+typer\params.py,Argument,encoding,Optional[str]
+typer\params.py,Argument,errors,Optional[str]
+typer\params.py,Argument,lazy,Optional[bool]
+typer\params.py,Argument,atomic,bool
+typer\params.py,Argument,exists,bool
+typer\params.py,Argument,file_okay,bool
+typer\params.py,Argument,dir_okay,bool
+typer\params.py,Argument,writable,bool
+typer\params.py,Argument,readable,bool
+typer\params.py,Argument,resolve_path,bool
+typer\params.py,Argument,allow_dash,bool
+typer\params.py,Argument,path_type,"Union[None, type[str], type[bytes]]"
+typer\params.py,Argument,rich_help_panel,"Union[str, None]"
+typer\params.py,Argument,return,Any
+typer\params.py,Argument,default,Optional[Any]
+typer\params.py,Argument,callback,"Optional[Callable[..., Any]]"
+typer\params.py,Argument,metavar,Optional[str]
+typer\params.py,Argument,expose_value,bool
+typer\params.py,Argument,is_eager,bool
+typer\params.py,Argument,envvar,"Optional[Union[str, list[str]]]"
+typer\params.py,Argument,shell_complete,"Optional[
+        Callable[
+            [click.Context, click.Parameter, str],
+            Union[list[""click.shell_completion.CompletionItem""], list[str]],
+        ]
+    ]"
+typer\params.py,Argument,autocompletion,"Optional[Callable[..., Any]]"
+typer\params.py,Argument,default_factory,"Optional[Callable[[], Any]]"
+typer\params.py,Argument,parser,"Optional[Callable[[str], Any]]"
+typer\params.py,Argument,click_type,Optional[click.ParamType]
+typer\params.py,Argument,show_default,"Union[bool, str]"
+typer\params.py,Argument,show_choices,bool
+typer\params.py,Argument,show_envvar,bool
+typer\params.py,Argument,help,Optional[str]
+typer\params.py,Argument,hidden,bool
+typer\params.py,Argument,case_sensitive,bool
+typer\params.py,Argument,min,"Optional[Union[int, float]]"
+typer\params.py,Argument,max,"Optional[Union[int, float]]"
+typer\params.py,Argument,clamp,bool
+typer\params.py,Argument,formats,Optional[list[str]]
+typer\params.py,Argument,mode,Optional[str]
+typer\params.py,Argument,encoding,Optional[str]
+typer\params.py,Argument,errors,Optional[str]
+typer\params.py,Argument,lazy,Optional[bool]
+typer\params.py,Argument,atomic,bool
+typer\params.py,Argument,exists,bool
+typer\params.py,Argument,file_okay,bool
+typer\params.py,Argument,dir_okay,bool
+typer\params.py,Argument,writable,bool
+typer\params.py,Argument,readable,bool
+typer\params.py,Argument,resolve_path,bool
+typer\params.py,Argument,allow_dash,bool
+typer\params.py,Argument,path_type,"Union[None, type[str], type[bytes]]"
+typer\params.py,Argument,rich_help_panel,"Union[str, None]"
+typer\rich_utils.py,_get_rich_console,return,Console
+typer\rich_utils.py,_get_rich_console,stderr,bool
+typer\rich_utils.py,_make_rich_text,return,"Union[Markdown, Text]"
+typer\rich_utils.py,_make_rich_text,text,str
+typer\rich_utils.py,_make_rich_text,style,str
+typer\rich_utils.py,_make_rich_text,markup_mode,MarkupModeStrict
+typer\rich_utils.py,_get_help_text,return,"Iterable[Union[Markdown, Text]]"
+typer\rich_utils.py,_get_help_text,obj,"Union[click.Command, click.Group]"
+typer\rich_utils.py,_get_help_text,markup_mode,MarkupModeStrict
+typer\rich_utils.py,_get_parameter_help,return,Columns
+typer\rich_utils.py,_get_parameter_help,param,"Union[click.Option, click.Argument, click.Parameter]"
+typer\rich_utils.py,_get_parameter_help,ctx,click.Context
+typer\rich_utils.py,_get_parameter_help,markup_mode,MarkupModeStrict
+typer\rich_utils.py,_make_command_help,return,"Union[Text, Markdown]"
+typer\rich_utils.py,_make_command_help,help_text,str
+typer\rich_utils.py,_make_command_help,markup_mode,MarkupModeStrict
+typer\rich_utils.py,_print_options_panel,return,None
+typer\rich_utils.py,_print_options_panel,name,str
+typer\rich_utils.py,_print_options_panel,params,"Union[list[click.Option], list[click.Argument]]"
+typer\rich_utils.py,_print_options_panel,ctx,click.Context
+typer\rich_utils.py,_print_options_panel,markup_mode,MarkupModeStrict
+typer\rich_utils.py,_print_options_panel,console,Console
+typer\rich_utils.py,_print_commands_panel,return,None
+typer\rich_utils.py,_print_commands_panel,name,str
+typer\rich_utils.py,_print_commands_panel,commands,list[click.Command]
+typer\rich_utils.py,_print_commands_panel,markup_mode,MarkupModeStrict
+typer\rich_utils.py,_print_commands_panel,console,Console
+typer\rich_utils.py,_print_commands_panel,cmd_len,int
+typer\rich_utils.py,rich_format_help,return,None
+typer\rich_utils.py,rich_format_help,obj,"Union[click.Command, click.Group]"
+typer\rich_utils.py,rich_format_help,ctx,click.Context
+typer\rich_utils.py,rich_format_help,markup_mode,MarkupModeStrict
+typer\rich_utils.py,rich_format_error,return,None
+typer\rich_utils.py,rich_format_error,self,click.ClickException
+typer\rich_utils.py,rich_abort_error,return,None
+typer\rich_utils.py,escape_before_html_export,return,str
+typer\rich_utils.py,escape_before_html_export,input_text,str
+typer\rich_utils.py,rich_to_html,return,str
+typer\rich_utils.py,rich_to_html,input_text,str
+typer\rich_utils.py,rich_render_text,return,str
+typer\rich_utils.py,rich_render_text,text,str
+typer\rich_utils.py,get_traceback,return,Traceback
+typer\rich_utils.py,get_traceback,exc,BaseException
+typer\rich_utils.py,get_traceback,exception_config,DeveloperExceptionConfig
+typer\rich_utils.py,get_traceback,internal_dir_names,list[str]
+typer\testing.py,invoke,return,Result
+typer\testing.py,invoke,app,Typer
+typer\testing.py,invoke,args,"Optional[Union[str, Sequence[str]]]"
+typer\testing.py,invoke,input,"Optional[Union[bytes, str, IO[Any]]]"
+typer\testing.py,invoke,env,"Optional[Mapping[str, Optional[str]]]"
+typer\testing.py,invoke,catch_exceptions,bool
+typer\testing.py,invoke,color,bool
+typer\testing.py,invoke,extra,Any
+typer\utils.py,_param_type_to_user_string,return,str
+typer\utils.py,_param_type_to_user_string,param_type,type[ParameterInfo]
+typer\utils.py,__init__,argument_name,str
+typer\utils.py,__init__,param_type,type[ParameterInfo]
+typer\utils.py,__str__,return,str
+typer\utils.py,__init__,argument_name,str
+typer\utils.py,__init__,annotated_param_type,type[ParameterInfo]
+typer\utils.py,__init__,default_param_type,type[ParameterInfo]
+typer\utils.py,__str__,return,str
+typer\utils.py,__init__,argument_name,str
+typer\utils.py,__str__,return,str
+typer\utils.py,__init__,argument_name,str
+typer\utils.py,__init__,param_type,type[ParameterInfo]
+typer\utils.py,__str__,return,str
+typer\utils.py,_split_annotation_from_typer_annotations,return,"tuple[type[Any], list[ParameterInfo]]"
+typer\utils.py,_split_annotation_from_typer_annotations,base_annotation,type[Any]
+typer\utils.py,get_params_from_function,return,"dict[str, ParamMeta]"
+typer\utils.py,get_params_from_function,func,"Callable[..., Any]"
+typer\_completion_classes.py,_sanitize_help_text,return,str
+typer\_completion_classes.py,_sanitize_help_text,text,str
+typer\_completion_classes.py,source_vars,return,"dict[str, Any]"
+typer\_completion_classes.py,get_completion_args,return,"tuple[list[str], str]"
+typer\_completion_classes.py,format_completion,return,str
+typer\_completion_classes.py,format_completion,item,click.shell_completion.CompletionItem
+typer\_completion_classes.py,complete,return,str
+typer\_completion_classes.py,source_vars,return,"dict[str, Any]"
+typer\_completion_classes.py,get_completion_args,return,"tuple[list[str], str]"
+typer\_completion_classes.py,format_completion,return,str
+typer\_completion_classes.py,format_completion,item,click.shell_completion.CompletionItem
+typer\_completion_classes.py,escape,return,str
+typer\_completion_classes.py,escape,s,str
+typer\_completion_classes.py,complete,return,str
+typer\_completion_classes.py,source_vars,return,"dict[str, Any]"
+typer\_completion_classes.py,get_completion_args,return,"tuple[list[str], str]"
+typer\_completion_classes.py,format_completion,return,str
+typer\_completion_classes.py,format_completion,item,click.shell_completion.CompletionItem
+typer\_completion_classes.py,complete,return,str
+typer\_completion_classes.py,source_vars,return,"dict[str, Any]"
+typer\_completion_classes.py,get_completion_args,return,"tuple[list[str], str]"
+typer\_completion_classes.py,format_completion,return,str
+typer\_completion_classes.py,format_completion,item,click.shell_completion.CompletionItem
+typer\_completion_classes.py,completion_init,return,None
+typer\_completion_shared.py,get_completion_script,return,str
+typer\_completion_shared.py,get_completion_script,prog_name,str
+typer\_completion_shared.py,get_completion_script,complete_var,str
+typer\_completion_shared.py,get_completion_script,shell,str
+typer\_completion_shared.py,install_bash,return,Path
+typer\_completion_shared.py,install_bash,prog_name,str
+typer\_completion_shared.py,install_bash,complete_var,str
+typer\_completion_shared.py,install_bash,shell,str
+typer\_completion_shared.py,install_zsh,return,Path
+typer\_completion_shared.py,install_zsh,prog_name,str
+typer\_completion_shared.py,install_zsh,complete_var,str
+typer\_completion_shared.py,install_zsh,shell,str
+typer\_completion_shared.py,install_fish,return,Path
+typer\_completion_shared.py,install_fish,prog_name,str
+typer\_completion_shared.py,install_fish,complete_var,str
+typer\_completion_shared.py,install_fish,shell,str
+typer\_completion_shared.py,install_powershell,return,Path
+typer\_completion_shared.py,install_powershell,prog_name,str
+typer\_completion_shared.py,install_powershell,complete_var,str
+typer\_completion_shared.py,install_powershell,shell,str
+typer\_completion_shared.py,install,return,"tuple[str, Path]"
+typer\_completion_shared.py,install,shell,Optional[str]
+typer\_completion_shared.py,install,prog_name,Optional[str]
+typer\_completion_shared.py,install,complete_var,Optional[str]
+typer\_completion_shared.py,_get_shell_name,return,"Union[str, None]"
+typer\_types.py,normalize_choice,return,str
+typer\_types.py,normalize_choice,choice,ParamTypeValue
+typer\_types.py,normalize_choice,ctx,"Union[click.Context, None]"
+typer\_typing.py,is_union,return,bool
+typer\_typing.py,is_union,tp,Optional[type[Any]]
+typer\_typing.py,is_union,return,bool
+typer\_typing.py,is_union,tp,Optional[type[Any]]
+typer\_typing.py,is_none_type,return,bool
+typer\_typing.py,is_none_type,type_,Any
+typer\_typing.py,is_callable_type,return,bool
+typer\_typing.py,is_callable_type,type_,type[Any]
+typer\_typing.py,is_literal_type,return,bool
+typer\_typing.py,is_literal_type,type_,type[Any]
+typer\_typing.py,literal_values,return,"tuple[Any, ...]"
+typer\_typing.py,literal_values,type_,type[Any]
+typer\_typing.py,all_literal_values,return,"tuple[Any, ...]"
+typer\_typing.py,all_literal_values,type_,type[Any]
+tests\assets\completion_argument.py,shell_complete,ctx,click.Context
+tests\assets\completion_argument.py,shell_complete,param,click.Parameter
+tests\assets\completion_argument.py,shell_complete,incomplete,str
+tests\assets\completion_argument.py,main,name,str
+tests\assets\completion_no_types.py,main,name,str
+tests\assets\completion_no_types_order.py,main,name,str
+tests\assets\corner_cases.py,main,name,str
+tests\assets\corner_cases.py,main,lastname,str
+tests\assets\corner_cases.py,main,age,int
+tests\assets\prog_name.py,main,i,int
+tests\assets\type_error_normal_traceback.py,main,name,str
+tests\assets\type_error_normal_traceback.py,broken,name,str
+tests\assets\type_error_no_rich.py,main,name,str
+tests\assets\type_error_no_rich_short_disable.py,main,name,str
+tests\test_cli\test_doc.py,test_doc_output,tmp_path,Path
+tests\test_cli\test_doc.py,test_doc_title_output,tmp_path,Path
+tests\test_cli\test_doc.py,test_doc_html_output,tmp_path,Path
+tests\test_completion\colon_example.py,_complete,return,str
+tests\test_completion\colon_example.py,_complete,incomplete,str
+tests\test_completion\colon_example.py,image,name,str
+tests\test_completion\example_rich_tags.py,create,username,str
+tests\test_completion\example_rich_tags.py,delete,username,str
+tests\test_completion\path_example.py,f,p,Path
+tests\test_completion\test_completion_complete.py,get_mod,return,ModuleType
+tests\test_completion\test_completion_complete.py,get_mod,request,pytest.FixtureRequest
+tests\test_completion\test_completion_complete.py,test_completion_complete_subcommand_bash,mod,ModuleType
+tests\test_completion\test_completion_complete.py,test_completion_complete_subcommand_bash_invalid,mod,ModuleType
+tests\test_completion\test_completion_complete.py,test_completion_complete_subcommand_zsh,mod,ModuleType
+tests\test_completion\test_completion_complete.py,test_completion_complete_subcommand_zsh_files,mod,ModuleType
+tests\test_completion\test_completion_complete.py,test_completion_complete_subcommand_fish,mod,ModuleType
+tests\test_completion\test_completion_complete.py,test_completion_complete_subcommand_fish_should_complete,mod,ModuleType
+tests\test_completion\test_completion_complete.py,test_completion_complete_subcommand_fish_should_complete_no,mod,ModuleType
+tests\test_completion\test_completion_complete.py,test_completion_complete_subcommand_powershell,mod,ModuleType
+tests\test_completion\test_completion_complete.py,test_completion_complete_subcommand_pwsh,mod,ModuleType
+tests\test_completion\test_completion_complete.py,test_completion_complete_subcommand_noshell,mod,ModuleType
+tests\test_completion\test_sanitization.py,test_sanitize_help_text,find_spec,"Union[ModuleSpec, None]"
+tests\test_completion\test_sanitization.py,test_sanitize_help_text,help_text,str
+tests\test_completion\test_sanitization.py,test_sanitize_help_text,expected,str
+tests\test_tutorial\test_app_dir\test_tutorial001.py,test_cli_config_exists,config_file,Path
+tests\test_tutorial\test_exceptions\test_tutorial001.py,test_standard_traceback_env_var,env_var,str
+tests\test_tutorial\test_exceptions\test_tutorial002.py,test_standard_traceback_env_var,env_var,str
+tests\test_tutorial\test_launch\test_tutorial002.py,test_cli,app_dir,Path
+tests\test_tutorial\test_options_autocompletion\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options_autocompletion\test_tutorial001.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options_autocompletion\test_tutorial002.py,test_completion,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial002.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options_autocompletion\test_tutorial003.py,test_completion_zsh,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial003.py,test_completion_powershell,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial003.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial004_tutorial005.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial004_tutorial005.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options_autocompletion\test_tutorial004_tutorial005.py,test_completion,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial004_tutorial005.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial004_tutorial005.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial006.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial006.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options_autocompletion\test_tutorial006.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial006.py,test_2,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial006.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial007.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial007.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options_autocompletion\test_tutorial007.py,test_completion,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial007.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial007.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial008.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial008.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options_autocompletion\test_tutorial008.py,test_completion,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial008.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial008.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial009.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial009.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options_autocompletion\test_tutorial009.py,test_completion,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial009.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options_autocompletion\test_tutorial009.py,test_script,mod,ModuleType
+tests\test_tutorial\test_terminating\test_tutorial003.py,test_root_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\test_tutorial\test_testing\test_app02.py,get_modules_path,return,str
+tests\test_tutorial\test_testing\test_app02.py,get_modules_path,request,pytest.FixtureRequest
+tests\test_tutorial\test_testing\test_app02.py,get_main_mod,return,ModuleType
+tests\test_tutorial\test_testing\test_app02.py,get_main_mod,module_paths,str
+tests\test_tutorial\test_testing\test_app02.py,get_test_mod,return,ModuleType
+tests\test_tutorial\test_testing\test_app02.py,get_test_mod,module_paths,str
+tests\test_tutorial\test_testing\test_app02.py,test_app02,test_mod,ModuleType
+tests\test_tutorial\test_testing\test_app02.py,test_script,main_mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial001.py,test_no_force,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial001.py,test_force,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial001.py,test_invalid_no_force,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial002.py,test_help_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial002.py,test_help_no_rich,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial002.py,test_main,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial002.py,test_accept,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial002.py,test_reject,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial002.py,test_invalid_no_accept,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial003.py,test_help,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial003.py,test_force,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial003.py,test_no_force,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial004.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial004.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial004.py,test_help,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial004.py,test_main,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial004.py,test_demo,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial004.py,test_short_demo,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_bool\test_tutorial004.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial001.py,test_parse_custom_type,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial001.py,test_parse_custom_type_with_default,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial002.py,test_parse_custom_type,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial002.py,test_parse_custom_type_with_default,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_custom_types\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_datetime\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_datetime\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_datetime\test_tutorial002.py,test_main,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_datetime\test_tutorial002.py,test_usa_weird_date_format,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_datetime\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial002.py,test_upper,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial002.py,test_mix,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial003.py,test_help,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial003.py,test_call_no_arg,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial003.py,test_call_single_arg,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial003.py,test_call_multiple_arg,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial004.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial004.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial004.py,test_help,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial004.py,test_invalid,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_enum\test_tutorial004.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial001.py,test_main,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial002.py,test_main,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial003.py,test_main,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial004.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial004.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial004.py,test_main,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial004.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial005.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial005.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial005.py,test_main,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_file\test_tutorial005.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,test_help_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,test_help_no_rich,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,test_params,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,test_invalid_id,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,test_invalid_age,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,test_invalid_score,monkeypatch,pytest.MonkeyPatch
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,test_invalid_score,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,test_negative_score,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial002.py,test_invalid_id,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial002.py,test_clamped,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial003.py,test_main,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial003.py,test_verbose_1,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial003.py,test_verbose_3,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial003.py,test_verbose_short_1,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial003.py,test_verbose_short_3,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial003.py,test_verbose_short_3_condensed,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_number\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial001.py,test_no_path,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial001.py,test_not_exists,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial001.py,test_exists,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial001.py,test_dir,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial002.py,test_not_exists,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial002.py,test_exists,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial002.py,test_dir,mod,ModuleType
+tests\test_tutorial\test_parameter_types\test_path\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_callback\test_tutorial001.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial001.py,test_2,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_callback\test_tutorial002.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial002.py,test_2,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_callback\test_tutorial003.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial003.py,test_2,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial003.py,test_completion,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial004.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial004.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_callback\test_tutorial004.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial004.py,test_2,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial004.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_callback\test_tutorial004.py,test_completion,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_help\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial001.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial001.py,test_option_lastname,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial001.py,test_formal,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_help\test_tutorial002.py,test_call,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial002.py,test_formal,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_help\test_tutorial003.py,test_call,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial003.py,test_help,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial004.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial004.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_help\test_tutorial004.py,test_call,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial004.py,test_help,mod,ModuleType
+tests\test_tutorial\test_options\test_help\test_tutorial004.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_name\test_tutorial001.py,test_option_help,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial001.py,test_call,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial001.py,test_call_no_args,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_name\test_tutorial002.py,test_option_help,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial002.py,test_call,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial002.py,test_call_long,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_name\test_tutorial003.py,test_option_help,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial003.py,test_call,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial004.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial004.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_name\test_tutorial004.py,test_option_help,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial004.py,test_call,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial004.py,test_call_long,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial004.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial005.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial005.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_name\test_tutorial005.py,test_option_help,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial005.py,test_call,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial005.py,test_call_formal,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial005.py,test_call_formal_condensed,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial005.py,test_call_condensed_wrong_order,mod,ModuleType
+tests\test_tutorial\test_options\test_name\test_tutorial005.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_password\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_password\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_password\test_tutorial001.py,test_option_email,mod,ModuleType
+tests\test_tutorial\test_options\test_password\test_tutorial001.py,test_option_email_prompt,mod,ModuleType
+tests\test_tutorial\test_options\test_password\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_options\test_password\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_password\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_password\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_password\test_tutorial002.py,test_option_password,mod,ModuleType
+tests\test_tutorial\test_options\test_password\test_tutorial002.py,test_option_password_prompt,mod,ModuleType
+tests\test_tutorial\test_options\test_password\test_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_options\test_password\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_prompt\test_tutorial001.py,test_option_lastname,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial001.py,test_option_lastname_prompt,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_prompt\test_tutorial002.py,test_option_lastname,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial002.py,test_option_lastname_prompt,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_prompt\test_tutorial003.py,test_prompt,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial003.py,test_prompt_not_equal,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial003.py,test_option,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial003.py,test_help,mod,ModuleType
+tests\test_tutorial\test_options\test_prompt\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_required\test_tutorial001_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_required\test_tutorial001_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_required\test_tutorial001_tutorial002.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options\test_required\test_tutorial001_tutorial002.py,test_option_lastname,mod,ModuleType
+tests\test_tutorial\test_options\test_required\test_tutorial001_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_options\test_required\test_tutorial001_tutorial002.py,test_help_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\test_tutorial\test_options\test_required\test_tutorial001_tutorial002.py,test_help_no_rich,mod,ModuleType
+tests\test_tutorial\test_options\test_required\test_tutorial001_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_version\test_tutorial001.py,test_version,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial001.py,test_version_with_name,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial001.py,test_no_version,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial001.py,test_completion,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_version\test_tutorial002.py,test_version_camila,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial002.py,test_version_not_camila,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial002.py,test_version_camila_no_version,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial002.py,test_completion,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_options\test_version\test_tutorial003.py,test_1,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial003.py,test_2,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial003.py,test_3,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_options\test_version\test_tutorial003.py,test_completion,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_arguments_with_multiple_values\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_multiple_values\test_arguments_with_multiple_values\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_multiple_values\test_arguments_with_multiple_values\test_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_arguments_with_multiple_values\test_tutorial002.py,test_defaults,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_arguments_with_multiple_values\test_tutorial002.py,test_invalid_args,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_arguments_with_multiple_values\test_tutorial002.py,test_valid_args,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_arguments_with_multiple_values\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial001.py,test_main,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial001.py,test_1_user,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial001.py,test_3_user,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial002.py,test_main,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial002.py,test_1_number,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial002.py,test_2_number,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_multiple_options\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_options_with_multiple_values\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_multiple_values\test_options_with_multiple_values\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_multiple_values\test_options_with_multiple_values\test_tutorial001.py,test_main,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_options_with_multiple_values\test_tutorial001.py,test_user_1,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_options_with_multiple_values\test_tutorial001.py,test_user_2,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_options_with_multiple_values\test_tutorial001.py,test_invalid_user,mod,ModuleType
+tests\test_tutorial\test_multiple_values\test_options_with_multiple_values\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_commands\test_callback\test_tutorial001.py,test_help_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_help_create,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_help_delete,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_help_delete_all,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_help_init,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_create,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_delete,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_no_delete,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_delete_all,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_no_delete_all,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_init,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial004.py,get_mod,return,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial004.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_commands\test_help\test_tutorial004.py,test_help,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial004.py,test_help_create,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial004.py,test_help_delete,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial004.py,test_create,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial004.py,test_delete,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial004.py,test_script,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial005.py,get_mod,return,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial005.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_commands\test_help\test_tutorial005.py,test_help,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial005.py,test_help_create,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial005.py,test_help_delete,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial005.py,test_create,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial005.py,test_delete,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial005.py,test_script,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial007.py,get_mod,return,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial007.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_commands\test_help\test_tutorial007.py,test_main_help,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial007.py,test_create_help,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial007.py,test_call,mod,ModuleType
+tests\test_tutorial\test_commands\test_help\test_tutorial007.py,test_script,mod,ModuleType
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,test_create,mod,ModuleType
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,test_delete,mod,ModuleType
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,test_no_delete,mod,ModuleType
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,test_delete_all,mod,ModuleType
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,test_no_delete_all,mod,ModuleType
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,test_delete_all_force,mod,ModuleType
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,test_init,mod,ModuleType
+tests\test_tutorial\test_commands\test_options\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_default\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_default\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_default\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_default\test_tutorial001.py,test_call_no_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_default\test_tutorial001.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_default\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_default\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_default\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_default\test_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_default\test_tutorial002.py,test_call_no_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_default\test_tutorial002.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_default\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial001.py,test_help_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial001.py,test_help_no_rich,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial001.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial001.py,test_call_env_var,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial001.py,test_call_env_var_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial002.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial002.py,test_call_env_var1,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial002.py,test_call_env_var2,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial003.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial003.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial003.py,test_call_env_var,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial003.py,test_call_env_var_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_envvar\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_help\test_tutorial001.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial001.py,test_help_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\test_tutorial\test_arguments\test_help\test_tutorial001.py,test_help_no_rich,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial001.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_help\test_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial002.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial003.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial003.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_help\test_tutorial003.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial003.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial003.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial004.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial004.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_help\test_tutorial004.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial004.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial004.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial005.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial005.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_help\test_tutorial005.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial005.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial005.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial006.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial006.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_help\test_tutorial006.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial006.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial006.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial007.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial007.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_help\test_tutorial007.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial007.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial007.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial008.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial008.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_help\test_tutorial008.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial008.py,test_help_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\test_tutorial\test_arguments\test_help\test_tutorial008.py,test_help_no_rich,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial008.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_help\test_tutorial008.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial000.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial000.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_optional\test_tutorial000.py,get_app,return,typer.Typer
+tests\test_tutorial\test_arguments\test_optional\test_tutorial000.py,get_app,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial000.py,test_cli,app,typer.Typer
+tests\test_tutorial\test_arguments\test_optional\test_tutorial000.py,test_cli_missing_argument,app,typer.Typer
+tests\test_tutorial\test_arguments\test_optional\test_tutorial000.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial001.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial001.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_optional\test_tutorial001.py,test_call_no_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial001.py,test_call_no_arg_standalone,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial001.py,test_call_no_arg_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\test_tutorial\test_arguments\test_optional\test_tutorial001.py,test_call_no_arg_no_rich,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial001.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial001.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial002.py,get_mod,return,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial002.py,get_mod,request,pytest.FixtureRequest
+tests\test_tutorial\test_arguments\test_optional\test_tutorial002.py,test_help,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial002.py,test_call_no_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial002.py,test_call_arg,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial002.py,test_script,mod,ModuleType
+tests\test_tutorial\test_arguments\test_optional\test_tutorial003.py,test_call_no_arg_no_rich,monkeypatch,pytest.MonkeyPatch
+tests\assets\cli\app_other_name.py,callback,name,str
+tests\assets\cli\func_other_name.py,some_function,name,str
+tests\assets\cli\multi_app.py,hello,name,str
+tests\assets\cli\multi_app.py,hello,age,int
+tests\assets\cli\multi_app.py,hi,user,str
+tests\assets\cli\multi_app_norich.py,hello,name,str
+tests\assets\cli\multi_app_norich.py,hello,age,int
+tests\assets\cli\multi_app_norich.py,hi,user,str
+tests\assets\cli\multi_func.py,main,name,str
+tests\assets\cli\rich_formatted_app.py,hello,user_1,"Annotated[
+        str,
+        typer.Argument(help=""The [bold]cool[/bold] name of the [green]user[/green]""),
+    ]"
+tests\assets\cli\rich_formatted_app.py,hello,user_2,"Annotated[str, typer.Argument(help=""The world"")]"
+tests\assets\cli\rich_formatted_app.py,hello,force,"Annotated[
+        bool, typer.Option(help=""Force the welcome [red]message[/red]"")
+    ]"
+tests\assets\cli\sample.py,hello,name,str
+tests\assets\cli\sample.py,hello,formal,bool
+tests\assets\cli\sample.py,bye,friend,bool
+docs_src\exceptions\tutorial001_py39.py,main,name,str
+docs_src\exceptions\tutorial002_py39.py,main,password,str
+docs_src\exceptions\tutorial003_py39.py,main,name,str
+docs_src\exceptions\tutorial004_py39.py,main,name,str
+docs_src\first_steps\tutorial002_py39.py,main,name,str
+docs_src\first_steps\tutorial003_py39.py,main,name,str
+docs_src\first_steps\tutorial003_py39.py,main,lastname,str
+docs_src\first_steps\tutorial004_py39.py,main,name,str
+docs_src\first_steps\tutorial004_py39.py,main,lastname,str
+docs_src\first_steps\tutorial004_py39.py,main,formal,bool
+docs_src\first_steps\tutorial005_py39.py,main,name,str
+docs_src\first_steps\tutorial005_py39.py,main,lastname,str
+docs_src\first_steps\tutorial005_py39.py,main,formal,bool
+docs_src\first_steps\tutorial006_py39.py,main,name,str
+docs_src\first_steps\tutorial006_py39.py,main,lastname,str
+docs_src\first_steps\tutorial006_py39.py,main,formal,bool
+docs_src\options_autocompletion\tutorial001_an_py39.py,main,name,"Annotated[str, typer.Option(help=""The name to say hi to."")]"
+docs_src\options_autocompletion\tutorial001_py39.py,main,name,str
+docs_src\options_autocompletion\tutorial002_an_py39.py,main,name,"Annotated[
+        str, typer.Option(help=""The name to say hi to."", autocompletion=complete_name)
+    ]"
+docs_src\options_autocompletion\tutorial002_py39.py,main,name,str
+docs_src\options_autocompletion\tutorial003_an_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial003_an_py39.py,main,name,"Annotated[
+        str, typer.Option(help=""The name to say hi to."", autocompletion=complete_name)
+    ]"
+docs_src\options_autocompletion\tutorial003_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial003_py39.py,main,name,str
+docs_src\options_autocompletion\tutorial004_an_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial004_an_py39.py,main,name,"Annotated[
+        str, typer.Option(help=""The name to say hi to."", autocompletion=complete_name)
+    ]"
+docs_src\options_autocompletion\tutorial004_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial004_py39.py,main,name,str
+docs_src\options_autocompletion\tutorial005_an_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial005_an_py39.py,main,name,"Annotated[
+        str, typer.Option(help=""The name to say hi to."", autocompletion=complete_name)
+    ]"
+docs_src\options_autocompletion\tutorial005_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial005_py39.py,main,name,str
+docs_src\options_autocompletion\tutorial006_an_py39.py,main,name,"Annotated[list[str], typer.Option(help=""The name to say hi to."")]"
+docs_src\options_autocompletion\tutorial006_py39.py,main,name,list[str]
+docs_src\options_autocompletion\tutorial007_an_py39.py,complete_name,ctx,typer.Context
+docs_src\options_autocompletion\tutorial007_an_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial007_an_py39.py,main,name,"Annotated[
+        list[str],
+        typer.Option(help=""The name to say hi to."", autocompletion=complete_name),
+    ]"
+docs_src\options_autocompletion\tutorial007_py39.py,complete_name,ctx,typer.Context
+docs_src\options_autocompletion\tutorial007_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial007_py39.py,main,name,list[str]
+docs_src\options_autocompletion\tutorial008_an_py39.py,complete_name,args,list[str]
+docs_src\options_autocompletion\tutorial008_an_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial008_an_py39.py,main,name,"Annotated[
+        list[str],
+        typer.Option(help=""The name to say hi to."", autocompletion=complete_name),
+    ]"
+docs_src\options_autocompletion\tutorial008_py39.py,complete_name,args,list[str]
+docs_src\options_autocompletion\tutorial008_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial008_py39.py,main,name,list[str]
+docs_src\options_autocompletion\tutorial009_an_py39.py,complete_name,ctx,typer.Context
+docs_src\options_autocompletion\tutorial009_an_py39.py,complete_name,args,list[str]
+docs_src\options_autocompletion\tutorial009_an_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial009_an_py39.py,main,name,"Annotated[
+        list[str],
+        typer.Option(help=""The name to say hi to."", autocompletion=complete_name),
+    ]"
+docs_src\options_autocompletion\tutorial009_py39.py,complete_name,ctx,typer.Context
+docs_src\options_autocompletion\tutorial009_py39.py,complete_name,args,list[str]
+docs_src\options_autocompletion\tutorial009_py39.py,complete_name,incomplete,str
+docs_src\options_autocompletion\tutorial009_py39.py,main,name,list[str]
+docs_src\printing\tutorial005_py39.py,main,good,bool
+docs_src\printing\tutorial006_py39.py,main,name,str
+docs_src\terminating\tutorial001_py39.py,maybe_create_user,username,str
+docs_src\terminating\tutorial001_py39.py,send_new_user_notification,username,str
+docs_src\terminating\tutorial001_py39.py,main,username,str
+docs_src\terminating\tutorial002_py39.py,main,username,str
+docs_src\terminating\tutorial003_py39.py,main,username,str
+docs_src\typer_app\tutorial001_py39.py,main,name,str
+docs_src\testing\app01_py39\main.py,main,name,str
+docs_src\testing\app01_py39\main.py,main,city,Optional[str]
+docs_src\testing\app02_an_py39\main.py,main,name,str
+docs_src\testing\app02_an_py39\main.py,main,email,"Annotated[str, typer.Option(prompt=True)]"
+docs_src\testing\app02_py39\main.py,main,name,str
+docs_src\testing\app02_py39\main.py,main,email,str
+docs_src\testing\app03_py39\main.py,main,name,str
+docs_src\subcommands\callback_override\tutorial001_py39.py,create,name,str
+docs_src\subcommands\callback_override\tutorial002_py39.py,create,name,str
+docs_src\subcommands\callback_override\tutorial003_py39.py,create,name,str
+docs_src\subcommands\callback_override\tutorial004_py39.py,create,name,str
+docs_src\subcommands\name_help\tutorial001_py39.py,create,name,str
+docs_src\subcommands\name_help\tutorial002_py39.py,create,name,str
+docs_src\subcommands\name_help\tutorial003_py39.py,create,name,str
+docs_src\subcommands\name_help\tutorial004_py39.py,create,name,str
+docs_src\subcommands\name_help\tutorial005_py39.py,create,name,str
+docs_src\subcommands\name_help\tutorial006_py39.py,create,name,str
+docs_src\subcommands\name_help\tutorial007_py39.py,create,name,str
+docs_src\subcommands\name_help\tutorial008_py39.py,create,name,str
+docs_src\subcommands\tutorial001_py39\items.py,create,item,str
+docs_src\subcommands\tutorial001_py39\items.py,delete,item,str
+docs_src\subcommands\tutorial001_py39\items.py,sell,item,str
+docs_src\subcommands\tutorial001_py39\users.py,create,user_name,str
+docs_src\subcommands\tutorial001_py39\users.py,delete,user_name,str
+docs_src\subcommands\tutorial002_py39\main.py,items_create,item,str
+docs_src\subcommands\tutorial002_py39\main.py,items_delete,item,str
+docs_src\subcommands\tutorial002_py39\main.py,items_sell,item,str
+docs_src\subcommands\tutorial002_py39\main.py,users_create,user_name,str
+docs_src\subcommands\tutorial002_py39\main.py,users_delete,user_name,str
+docs_src\subcommands\tutorial003_py39\items.py,create,item,str
+docs_src\subcommands\tutorial003_py39\items.py,delete,item,str
+docs_src\subcommands\tutorial003_py39\items.py,sell,item,str
+docs_src\subcommands\tutorial003_py39\reigns.py,conquer,name,str
+docs_src\subcommands\tutorial003_py39\reigns.py,destroy,name,str
+docs_src\subcommands\tutorial003_py39\towns.py,found,name,str
+docs_src\subcommands\tutorial003_py39\towns.py,burn,name,str
+docs_src\subcommands\tutorial003_py39\users.py,create,user_name,str
+docs_src\subcommands\tutorial003_py39\users.py,delete,user_name,str
+docs_src\parameter_types\bool\tutorial001_an_py39.py,main,force,"Annotated[bool, typer.Option(""--force"")]"
+docs_src\parameter_types\bool\tutorial001_py39.py,main,force,bool
+docs_src\parameter_types\bool\tutorial002_an_py310.py,main,accept,"Annotated[bool | None, typer.Option(""--accept/--reject"")]"
+docs_src\parameter_types\bool\tutorial002_an_py39.py,main,accept,"Annotated[Optional[bool], typer.Option(""--accept/--reject"")]"
+docs_src\parameter_types\bool\tutorial002_py310.py,main,accept,bool | None
+docs_src\parameter_types\bool\tutorial002_py39.py,main,accept,Optional[bool]
+docs_src\parameter_types\bool\tutorial003_an_py39.py,main,force,"Annotated[bool, typer.Option(""--force/--no-force"", ""-f/-F"")]"
+docs_src\parameter_types\bool\tutorial003_py39.py,main,force,bool
+docs_src\parameter_types\bool\tutorial004_an_py39.py,main,in_prod,"Annotated[bool, typer.Option("" /--demo"", "" /-d"")]"
+docs_src\parameter_types\bool\tutorial004_py39.py,main,in_prod,bool
+docs_src\parameter_types\custom_types\tutorial001_an_py39.py,__init__,value,str
+docs_src\parameter_types\custom_types\tutorial001_an_py39.py,parse_custom_class,value,str
+docs_src\parameter_types\custom_types\tutorial001_an_py39.py,main,custom_arg,"Annotated[CustomClass, typer.Argument(parser=parse_custom_class)]"
+docs_src\parameter_types\custom_types\tutorial001_an_py39.py,main,custom_opt,"Annotated[CustomClass, typer.Option(parser=parse_custom_class)]"
+docs_src\parameter_types\custom_types\tutorial001_py39.py,__init__,value,str
+docs_src\parameter_types\custom_types\tutorial001_py39.py,parse_custom_class,value,str
+docs_src\parameter_types\custom_types\tutorial001_py39.py,main,custom_arg,CustomClass
+docs_src\parameter_types\custom_types\tutorial001_py39.py,main,custom_opt,CustomClass
+docs_src\parameter_types\custom_types\tutorial002_an_py39.py,__init__,value,str
+docs_src\parameter_types\custom_types\tutorial002_an_py39.py,main,custom_arg,"Annotated[CustomClass, typer.Argument(click_type=CustomClassParser())]"
+docs_src\parameter_types\custom_types\tutorial002_an_py39.py,main,custom_opt,"Annotated[
+        CustomClass, typer.Option(click_type=CustomClassParser())
+    ]"
+docs_src\parameter_types\custom_types\tutorial002_py39.py,__init__,value,str
+docs_src\parameter_types\custom_types\tutorial002_py39.py,main,custom_arg,CustomClass
+docs_src\parameter_types\custom_types\tutorial002_py39.py,main,custom_opt,CustomClass
+docs_src\parameter_types\datetime\tutorial001_py39.py,main,birth,datetime
+docs_src\parameter_types\datetime\tutorial002_an_py39.py,main,launch_date,"Annotated[
+        datetime,
+        typer.Argument(
+            formats=[""%Y-%m-%d"", ""%Y-%m-%dT%H:%M:%S"", ""%Y-%m-%d %H:%M:%S"", ""%m/%d/%Y""]
+        ),
+    ]"
+docs_src\parameter_types\datetime\tutorial002_py39.py,main,launch_date,datetime
+docs_src\parameter_types\enum\tutorial001_py39.py,main,network,NeuralNetwork
+docs_src\parameter_types\enum\tutorial002_an_py39.py,main,network,"Annotated[
+        NeuralNetwork, typer.Option(case_sensitive=False)
+    ]"
+docs_src\parameter_types\enum\tutorial002_py39.py,main,network,NeuralNetwork
+docs_src\parameter_types\enum\tutorial003_an_py39.py,main,groceries,"Annotated[list[Food], typer.Option()]"
+docs_src\parameter_types\enum\tutorial003_py39.py,main,groceries,list[Food]
+docs_src\parameter_types\enum\tutorial004_an_py310.py,main,network,"Annotated[Literal[""simple"", ""conv"", ""lstm""], typer.Option()]"
+docs_src\parameter_types\enum\tutorial004_an_py39.py,main,network,"Annotated[Literal[""simple"", ""conv"", ""lstm""], typer.Option()]"
+docs_src\parameter_types\enum\tutorial004_py310.py,main,network,"Literal[""simple"", ""conv"", ""lstm""]"
+docs_src\parameter_types\enum\tutorial004_py39.py,main,network,"Literal[""simple"", ""conv"", ""lstm""]"
+docs_src\parameter_types\file\tutorial001_an_py39.py,main,config,"Annotated[typer.FileText, typer.Option()]"
+docs_src\parameter_types\file\tutorial001_py39.py,main,config,typer.FileText
+docs_src\parameter_types\file\tutorial002_an_py39.py,main,config,"Annotated[typer.FileTextWrite, typer.Option()]"
+docs_src\parameter_types\file\tutorial002_py39.py,main,config,typer.FileTextWrite
+docs_src\parameter_types\file\tutorial003_an_py39.py,main,file,"Annotated[typer.FileBinaryRead, typer.Option()]"
+docs_src\parameter_types\file\tutorial003_py39.py,main,file,typer.FileBinaryRead
+docs_src\parameter_types\file\tutorial004_an_py39.py,main,file,"Annotated[typer.FileBinaryWrite, typer.Option()]"
+docs_src\parameter_types\file\tutorial004_py39.py,main,file,typer.FileBinaryWrite
+docs_src\parameter_types\file\tutorial005_an_py39.py,main,config,"Annotated[typer.FileText, typer.Option(mode=""a"")]"
+docs_src\parameter_types\file\tutorial005_py39.py,main,config,typer.FileText
+docs_src\parameter_types\index\tutorial001_py39.py,main,name,str
+docs_src\parameter_types\index\tutorial001_py39.py,main,age,int
+docs_src\parameter_types\index\tutorial001_py39.py,main,height_meters,float
+docs_src\parameter_types\index\tutorial001_py39.py,main,female,bool
+docs_src\parameter_types\number\tutorial001_an_py39.py,main,id,"Annotated[int, typer.Argument(min=0, max=1000)]"
+docs_src\parameter_types\number\tutorial001_an_py39.py,main,age,"Annotated[int, typer.Option(min=18)]"
+docs_src\parameter_types\number\tutorial001_an_py39.py,main,score,"Annotated[float, typer.Option(max=100)]"
+docs_src\parameter_types\number\tutorial001_py39.py,main,id,int
+docs_src\parameter_types\number\tutorial001_py39.py,main,age,int
+docs_src\parameter_types\number\tutorial001_py39.py,main,score,float
+docs_src\parameter_types\number\tutorial002_an_py39.py,main,id,"Annotated[int, typer.Argument(min=0, max=1000)]"
+docs_src\parameter_types\number\tutorial002_an_py39.py,main,rank,"Annotated[int, typer.Option(max=10, clamp=True)]"
+docs_src\parameter_types\number\tutorial002_an_py39.py,main,score,"Annotated[float, typer.Option(min=0, max=100, clamp=True)]"
+docs_src\parameter_types\number\tutorial002_py39.py,main,id,int
+docs_src\parameter_types\number\tutorial002_py39.py,main,rank,int
+docs_src\parameter_types\number\tutorial002_py39.py,main,score,float
+docs_src\parameter_types\number\tutorial003_an_py39.py,main,verbose,"Annotated[int, typer.Option(""--verbose"", ""-v"", count=True)]"
+docs_src\parameter_types\number\tutorial003_py39.py,main,verbose,int
+docs_src\parameter_types\path\tutorial001_an_py310.py,main,config,"Annotated[Path | None, typer.Option()]"
+docs_src\parameter_types\path\tutorial001_an_py39.py,main,config,"Annotated[Optional[Path], typer.Option()]"
+docs_src\parameter_types\path\tutorial001_py310.py,main,config,Path | None
+docs_src\parameter_types\path\tutorial001_py39.py,main,config,Optional[Path]
+docs_src\parameter_types\path\tutorial002_an_py39.py,main,config,"Annotated[
+        Path,
+        typer.Option(
+            exists=True,
+            file_okay=True,
+            dir_okay=False,
+            writable=False,
+            readable=True,
+            resolve_path=True,
+        ),
+    ]"
+docs_src\parameter_types\path\tutorial002_py39.py,main,config,Path
+docs_src\parameter_types\uuid\tutorial001_py39.py,main,user_id,UUID
+docs_src\options\callback\tutorial001_an_py310.py,name_callback,value,str
+docs_src\options\callback\tutorial001_an_py310.py,main,name,"Annotated[str | None, typer.Option(callback=name_callback)]"
+docs_src\options\callback\tutorial001_an_py39.py,name_callback,value,str
+docs_src\options\callback\tutorial001_an_py39.py,main,name,"Annotated[Optional[str], typer.Option(callback=name_callback)]"
+docs_src\options\callback\tutorial001_py310.py,name_callback,value,str
+docs_src\options\callback\tutorial001_py310.py,main,name,str | None
+docs_src\options\callback\tutorial001_py39.py,name_callback,value,str
+docs_src\options\callback\tutorial001_py39.py,main,name,Optional[str]
+docs_src\options\callback\tutorial002_an_py310.py,name_callback,value,str
+docs_src\options\callback\tutorial002_an_py310.py,main,name,"Annotated[str | None, typer.Option(callback=name_callback)]"
+docs_src\options\callback\tutorial002_an_py39.py,name_callback,value,str
+docs_src\options\callback\tutorial002_an_py39.py,main,name,"Annotated[Optional[str], typer.Option(callback=name_callback)]"
+docs_src\options\callback\tutorial002_py310.py,name_callback,value,str
+docs_src\options\callback\tutorial002_py310.py,main,name,str | None
+docs_src\options\callback\tutorial002_py39.py,name_callback,value,str
+docs_src\options\callback\tutorial002_py39.py,main,name,Optional[str]
+docs_src\options\callback\tutorial003_an_py310.py,name_callback,ctx,typer.Context
+docs_src\options\callback\tutorial003_an_py310.py,name_callback,value,str
+docs_src\options\callback\tutorial003_an_py310.py,main,name,"Annotated[str | None, typer.Option(callback=name_callback)]"
+docs_src\options\callback\tutorial003_an_py39.py,name_callback,ctx,typer.Context
+docs_src\options\callback\tutorial003_an_py39.py,name_callback,value,str
+docs_src\options\callback\tutorial003_an_py39.py,main,name,"Annotated[Optional[str], typer.Option(callback=name_callback)]"
+docs_src\options\callback\tutorial003_py310.py,name_callback,ctx,typer.Context
+docs_src\options\callback\tutorial003_py310.py,name_callback,value,str
+docs_src\options\callback\tutorial003_py310.py,main,name,str | None
+docs_src\options\callback\tutorial003_py39.py,name_callback,ctx,typer.Context
+docs_src\options\callback\tutorial003_py39.py,name_callback,value,str
+docs_src\options\callback\tutorial003_py39.py,main,name,Optional[str]
+docs_src\options\callback\tutorial004_an_py310.py,name_callback,ctx,typer.Context
+docs_src\options\callback\tutorial004_an_py310.py,name_callback,param,typer.CallbackParam
+docs_src\options\callback\tutorial004_an_py310.py,name_callback,value,str
+docs_src\options\callback\tutorial004_an_py310.py,main,name,"Annotated[str | None, typer.Option(callback=name_callback)]"
+docs_src\options\callback\tutorial004_an_py39.py,name_callback,ctx,typer.Context
+docs_src\options\callback\tutorial004_an_py39.py,name_callback,param,typer.CallbackParam
+docs_src\options\callback\tutorial004_an_py39.py,name_callback,value,str
+docs_src\options\callback\tutorial004_an_py39.py,main,name,"Annotated[Optional[str], typer.Option(callback=name_callback)]"
+docs_src\options\callback\tutorial004_py310.py,name_callback,ctx,typer.Context
+docs_src\options\callback\tutorial004_py310.py,name_callback,param,typer.CallbackParam
+docs_src\options\callback\tutorial004_py310.py,name_callback,value,str
+docs_src\options\callback\tutorial004_py310.py,main,name,str | None
+docs_src\options\callback\tutorial004_py39.py,name_callback,ctx,typer.Context
+docs_src\options\callback\tutorial004_py39.py,name_callback,param,typer.CallbackParam
+docs_src\options\callback\tutorial004_py39.py,name_callback,value,str
+docs_src\options\callback\tutorial004_py39.py,main,name,Optional[str]
+docs_src\options\help\tutorial001_an_py39.py,main,name,str
+docs_src\options\help\tutorial001_an_py39.py,main,lastname,"Annotated[str, typer.Option(help=""Last name of person to greet."")]"
+docs_src\options\help\tutorial001_an_py39.py,main,formal,"Annotated[bool, typer.Option(help=""Say hi formally."")]"
+docs_src\options\help\tutorial001_py39.py,main,name,str
+docs_src\options\help\tutorial001_py39.py,main,lastname,str
+docs_src\options\help\tutorial001_py39.py,main,formal,bool
+docs_src\options\help\tutorial002_an_py39.py,main,name,str
+docs_src\options\help\tutorial002_an_py39.py,main,lastname,"Annotated[str, typer.Option(help=""Last name of person to greet."")]"
+docs_src\options\help\tutorial002_an_py39.py,main,formal,"Annotated[
+        bool,
+        typer.Option(
+            help=""Say hi formally."", rich_help_panel=""Customization and Utils""
+        ),
+    ]"
+docs_src\options\help\tutorial002_an_py39.py,main,debug,"Annotated[
+        bool,
+        typer.Option(
+            help=""Enable debugging."", rich_help_panel=""Customization and Utils""
+        ),
+    ]"
+docs_src\options\help\tutorial002_py39.py,main,name,str
+docs_src\options\help\tutorial002_py39.py,main,lastname,str
+docs_src\options\help\tutorial002_py39.py,main,formal,bool
+docs_src\options\help\tutorial002_py39.py,main,debug,bool
+docs_src\options\help\tutorial003_an_py39.py,main,fullname,"Annotated[str, typer.Option(show_default=False)]"
+docs_src\options\help\tutorial003_py39.py,main,fullname,str
+docs_src\options\help\tutorial004_an_py39.py,main,fullname,"Annotated[
+        str, typer.Option(show_default=""Deadpoolio the amazing's name"")
+    ]"
+docs_src\options\help\tutorial004_py39.py,main,fullname,str
+docs_src\options\name\tutorial001_an_py39.py,main,user_name,"Annotated[str, typer.Option(""--name"")]"
+docs_src\options\name\tutorial001_py39.py,main,user_name,str
+docs_src\options\name\tutorial002_an_py39.py,main,user_name,"Annotated[str, typer.Option(""--name"", ""-n"")]"
+docs_src\options\name\tutorial002_py39.py,main,user_name,str
+docs_src\options\name\tutorial003_an_py39.py,main,user_name,"Annotated[str, typer.Option(""-n"")]"
+docs_src\options\name\tutorial003_py39.py,main,user_name,str
+docs_src\options\name\tutorial004_an_py39.py,main,user_name,"Annotated[str, typer.Option(""--user-name"", ""-n"")]"
+docs_src\options\name\tutorial004_py39.py,main,user_name,str
+docs_src\options\name\tutorial005_an_py39.py,main,name,"Annotated[str, typer.Option(""--name"", ""-n"")]"
+docs_src\options\name\tutorial005_an_py39.py,main,formal,"Annotated[bool, typer.Option(""--formal"", ""-f"")]"
+docs_src\options\name\tutorial005_py39.py,main,name,str
+docs_src\options\name\tutorial005_py39.py,main,formal,bool
+docs_src\options\password\tutorial001_an_py39.py,main,name,str
+docs_src\options\password\tutorial001_an_py39.py,main,email,"Annotated[str, typer.Option(prompt=True, confirmation_prompt=True)]"
+docs_src\options\password\tutorial001_py39.py,main,name,str
+docs_src\options\password\tutorial001_py39.py,main,email,str
+docs_src\options\password\tutorial002_an_py39.py,main,name,str
+docs_src\options\password\tutorial002_an_py39.py,main,password,"Annotated[
+        str, typer.Option(prompt=True, confirmation_prompt=True, hide_input=True)
+    ]"
+docs_src\options\password\tutorial002_py39.py,main,name,str
+docs_src\options\password\tutorial002_py39.py,main,password,str
+docs_src\options\prompt\tutorial001_an_py39.py,main,name,str
+docs_src\options\prompt\tutorial001_an_py39.py,main,lastname,"Annotated[str, typer.Option(prompt=True)]"
+docs_src\options\prompt\tutorial001_py39.py,main,name,str
+docs_src\options\prompt\tutorial001_py39.py,main,lastname,str
+docs_src\options\prompt\tutorial002_an_py39.py,main,name,str
+docs_src\options\prompt\tutorial002_an_py39.py,main,lastname,"Annotated[str, typer.Option(prompt=""Please tell me your last name"")]"
+docs_src\options\prompt\tutorial002_py39.py,main,name,str
+docs_src\options\prompt\tutorial002_py39.py,main,lastname,str
+docs_src\options\prompt\tutorial003_an_py39.py,main,project_name,"Annotated[str, typer.Option(prompt=True, confirmation_prompt=True)]"
+docs_src\options\prompt\tutorial003_py39.py,main,project_name,str
+docs_src\options\required\tutorial001_an_py39.py,main,name,str
+docs_src\options\required\tutorial001_an_py39.py,main,lastname,"Annotated[str, typer.Option()]"
+docs_src\options\required\tutorial001_py39.py,main,name,str
+docs_src\options\required\tutorial001_py39.py,main,lastname,str
+docs_src\options\required\tutorial002_py39.py,main,name,str
+docs_src\options\required\tutorial002_py39.py,main,lastname,str
+docs_src\options\version\tutorial001_an_py310.py,version_callback,value,bool
+docs_src\options\version\tutorial001_an_py310.py,main,name,"Annotated[str, typer.Option()]"
+docs_src\options\version\tutorial001_an_py310.py,main,version,"Annotated[
+        bool | None, typer.Option(""--version"", callback=version_callback)
+    ]"
+docs_src\options\version\tutorial001_an_py39.py,version_callback,value,bool
+docs_src\options\version\tutorial001_an_py39.py,main,name,"Annotated[str, typer.Option()]"
+docs_src\options\version\tutorial001_an_py39.py,main,version,"Annotated[
+        Optional[bool], typer.Option(""--version"", callback=version_callback)
+    ]"
+docs_src\options\version\tutorial001_py310.py,version_callback,value,bool
+docs_src\options\version\tutorial001_py310.py,main,name,str
+docs_src\options\version\tutorial001_py310.py,main,version,bool | None
+docs_src\options\version\tutorial001_py39.py,version_callback,value,bool
+docs_src\options\version\tutorial001_py39.py,main,name,str
+docs_src\options\version\tutorial001_py39.py,main,version,Optional[bool]
+docs_src\options\version\tutorial002_an_py310.py,version_callback,value,bool
+docs_src\options\version\tutorial002_an_py310.py,name_callback,name,str
+docs_src\options\version\tutorial002_an_py310.py,main,name,"Annotated[str, typer.Option(callback=name_callback)]"
+docs_src\options\version\tutorial002_an_py310.py,main,version,"Annotated[
+        bool | None, typer.Option(""--version"", callback=version_callback)
+    ]"
+docs_src\options\version\tutorial002_an_py39.py,version_callback,value,bool
+docs_src\options\version\tutorial002_an_py39.py,name_callback,name,str
+docs_src\options\version\tutorial002_an_py39.py,main,name,"Annotated[str, typer.Option(callback=name_callback)]"
+docs_src\options\version\tutorial002_an_py39.py,main,version,"Annotated[
+        Optional[bool], typer.Option(""--version"", callback=version_callback)
+    ]"
+docs_src\options\version\tutorial002_py310.py,version_callback,value,bool
+docs_src\options\version\tutorial002_py310.py,name_callback,name,str
+docs_src\options\version\tutorial002_py310.py,main,name,str
+docs_src\options\version\tutorial002_py310.py,main,version,bool | None
+docs_src\options\version\tutorial002_py39.py,version_callback,value,bool
+docs_src\options\version\tutorial002_py39.py,name_callback,name,str
+docs_src\options\version\tutorial002_py39.py,main,name,str
+docs_src\options\version\tutorial002_py39.py,main,version,Optional[bool]
+docs_src\options\version\tutorial003_an_py310.py,version_callback,value,bool
+docs_src\options\version\tutorial003_an_py310.py,name_callback,name,str
+docs_src\options\version\tutorial003_an_py310.py,main,name,"Annotated[str, typer.Option(callback=name_callback)]"
+docs_src\options\version\tutorial003_an_py310.py,main,version,"Annotated[
+        bool | None,
+        typer.Option(""--version"", callback=version_callback, is_eager=True),
+    ]"
+docs_src\options\version\tutorial003_an_py39.py,version_callback,value,bool
+docs_src\options\version\tutorial003_an_py39.py,name_callback,name,str
+docs_src\options\version\tutorial003_an_py39.py,main,name,"Annotated[str, typer.Option(callback=name_callback)]"
+docs_src\options\version\tutorial003_an_py39.py,main,version,"Annotated[
+        Optional[bool],
+        typer.Option(""--version"", callback=version_callback, is_eager=True),
+    ]"
+docs_src\options\version\tutorial003_py310.py,version_callback,value,bool
+docs_src\options\version\tutorial003_py310.py,name_callback,name,str
+docs_src\options\version\tutorial003_py310.py,main,name,str
+docs_src\options\version\tutorial003_py310.py,main,version,bool | None
+docs_src\options\version\tutorial003_py39.py,version_callback,value,bool
+docs_src\options\version\tutorial003_py39.py,name_callback,name,str
+docs_src\options\version\tutorial003_py39.py,main,name,str
+docs_src\options\version\tutorial003_py39.py,main,version,Optional[bool]
+docs_src\one_file_per_command\app_py39\users\add.py,add,name,str
+docs_src\one_file_per_command\app_py39\users\delete.py,delete,name,str
+docs_src\multiple_values\arguments_with_multiple_values\tutorial001_py39.py,main,files,list[Path]
+docs_src\multiple_values\arguments_with_multiple_values\tutorial001_py39.py,main,celebration,str
+docs_src\multiple_values\arguments_with_multiple_values\tutorial002_an_py39.py,main,names,"Annotated[
+        tuple[str, str, str], typer.Argument(help=""Select 3 characters to play with"")
+    ]"
+docs_src\multiple_values\arguments_with_multiple_values\tutorial002_py39.py,main,names,"tuple[str, str, str]"
+docs_src\multiple_values\multiple_options\tutorial001_an_py310.py,main,user,"Annotated[list[str] | None, typer.Option()]"
+docs_src\multiple_values\multiple_options\tutorial001_an_py39.py,main,user,"Annotated[Optional[list[str]], typer.Option()]"
+docs_src\multiple_values\multiple_options\tutorial001_py310.py,main,user,list[str] | None
+docs_src\multiple_values\multiple_options\tutorial001_py39.py,main,user,Optional[list[str]]
+docs_src\multiple_values\multiple_options\tutorial002_an_py39.py,main,number,"Annotated[list[float], typer.Option()]"
+docs_src\multiple_values\multiple_options\tutorial002_py39.py,main,number,list[float]
+docs_src\multiple_values\options_with_multiple_values\tutorial001_an_py39.py,main,user,"Annotated[tuple[str, int, bool], typer.Option()]"
+docs_src\multiple_values\options_with_multiple_values\tutorial001_py39.py,main,user,"tuple[str, int, bool]"
+docs_src\commands\arguments\tutorial001_py39.py,create,username,str
+docs_src\commands\arguments\tutorial001_py39.py,delete,username,str
+docs_src\commands\callback\tutorial001_py39.py,create,username,str
+docs_src\commands\callback\tutorial001_py39.py,delete,username,str
+docs_src\commands\callback\tutorial001_py39.py,main,verbose,bool
+docs_src\commands\callback\tutorial002_py39.py,create,name,str
+docs_src\commands\callback\tutorial003_py39.py,create,name,str
+docs_src\commands\callback\tutorial004_py39.py,create,name,str
+docs_src\commands\context\tutorial001_py39.py,create,username,str
+docs_src\commands\context\tutorial001_py39.py,delete,username,str
+docs_src\commands\context\tutorial001_py39.py,main,ctx,typer.Context
+docs_src\commands\context\tutorial002_py39.py,create,username,str
+docs_src\commands\context\tutorial002_py39.py,delete,username,str
+docs_src\commands\context\tutorial003_py39.py,create,username,str
+docs_src\commands\context\tutorial003_py39.py,delete,username,str
+docs_src\commands\context\tutorial003_py39.py,main,ctx,typer.Context
+docs_src\commands\context\tutorial004_py39.py,main,ctx,typer.Context
+docs_src\commands\help\tutorial001_an_py39.py,create,username,str
+docs_src\commands\help\tutorial001_an_py39.py,delete,username,str
+docs_src\commands\help\tutorial001_an_py39.py,delete,force,"Annotated[
+        bool,
+        typer.Option(
+            prompt=""Are you sure you want to delete the user?"",
+            help=""Force deletion without confirmation."",
+        ),
+    ]"
+docs_src\commands\help\tutorial001_an_py39.py,delete_all,force,"Annotated[
+        bool,
+        typer.Option(
+            prompt=""Are you sure you want to delete ALL users?"",
+            help=""Force deletion without confirmation."",
+        ),
+    ]"
+docs_src\commands\help\tutorial001_py39.py,create,username,str
+docs_src\commands\help\tutorial001_py39.py,delete,username,str
+docs_src\commands\help\tutorial001_py39.py,delete,force,bool
+docs_src\commands\help\tutorial001_py39.py,delete_all,force,bool
+docs_src\commands\help\tutorial002_py39.py,create,username,str
+docs_src\commands\help\tutorial002_py39.py,delete,username,str
+docs_src\commands\help\tutorial003_py39.py,create,username,str
+docs_src\commands\help\tutorial003_py39.py,delete,username,str
+docs_src\commands\help\tutorial004_an_py39.py,create,username,"Annotated[
+        str, typer.Argument(help=""The username to be [green]created[/green]"")
+    ]"
+docs_src\commands\help\tutorial004_an_py39.py,delete,username,"Annotated[
+        str, typer.Argument(help=""The username to be [red]deleted[/red]"")
+    ]"
+docs_src\commands\help\tutorial004_an_py39.py,delete,force,"Annotated[
+        bool, typer.Option(help=""Force the [bold red]deletion[/bold red] :boom:"")
+    ]"
+docs_src\commands\help\tutorial004_py39.py,create,username,str
+docs_src\commands\help\tutorial004_py39.py,delete,username,str
+docs_src\commands\help\tutorial004_py39.py,delete,force,bool
+docs_src\commands\help\tutorial005_an_py39.py,create,username,"Annotated[str, typer.Argument(help=""The username to be **created**"")]"
+docs_src\commands\help\tutorial005_an_py39.py,delete,username,"Annotated[str, typer.Argument(help=""The username to be **deleted**"")]"
+docs_src\commands\help\tutorial005_an_py39.py,delete,force,"Annotated[bool, typer.Option(help=""Force the **deletion** :boom:"")]"
+docs_src\commands\help\tutorial005_py39.py,create,username,str
+docs_src\commands\help\tutorial005_py39.py,delete,username,str
+docs_src\commands\help\tutorial005_py39.py,delete,force,bool
+docs_src\commands\help\tutorial006_py39.py,create,username,str
+docs_src\commands\help\tutorial006_py39.py,delete,username,str
+docs_src\commands\help\tutorial006_py39.py,config,configuration,str
+docs_src\commands\help\tutorial007_an_py310.py,create,username,"Annotated[str, typer.Argument(help=""The username to create"")]"
+docs_src\commands\help\tutorial007_an_py310.py,create,lastname,"Annotated[
+        str,
+        typer.Argument(
+            help=""The last name of the new user"", rich_help_panel=""Secondary Arguments""
+        ),
+    ]"
+docs_src\commands\help\tutorial007_an_py310.py,create,force,"Annotated[bool, typer.Option(help=""Force the creation of the user"")]"
+docs_src\commands\help\tutorial007_an_py310.py,create,age,"Annotated[
+        int | None,
+        typer.Option(help=""The age of the new user"", rich_help_panel=""Additional Data""),
+    ]"
+docs_src\commands\help\tutorial007_an_py310.py,create,favorite_color,"Annotated[
+        str | None,
+        typer.Option(
+            help=""The favorite color of the new user"",
+            rich_help_panel=""Additional Data"",
+        ),
+    ]"
+docs_src\commands\help\tutorial007_an_py310.py,config,configuration,str
+docs_src\commands\help\tutorial007_an_py39.py,create,username,"Annotated[str, typer.Argument(help=""The username to create"")]"
+docs_src\commands\help\tutorial007_an_py39.py,create,lastname,"Annotated[
+        str,
+        typer.Argument(
+            help=""The last name of the new user"", rich_help_panel=""Secondary Arguments""
+        ),
+    ]"
+docs_src\commands\help\tutorial007_an_py39.py,create,force,"Annotated[bool, typer.Option(help=""Force the creation of the user"")]"
+docs_src\commands\help\tutorial007_an_py39.py,create,age,"Annotated[
+        Union[int, None],
+        typer.Option(help=""The age of the new user"", rich_help_panel=""Additional Data""),
+    ]"
+docs_src\commands\help\tutorial007_an_py39.py,create,favorite_color,"Annotated[
+        Union[str, None],
+        typer.Option(
+            help=""The favorite color of the new user"",
+            rich_help_panel=""Additional Data"",
+        ),
+    ]"
+docs_src\commands\help\tutorial007_an_py39.py,config,configuration,str
+docs_src\commands\help\tutorial007_py310.py,create,username,str
+docs_src\commands\help\tutorial007_py310.py,create,lastname,str
+docs_src\commands\help\tutorial007_py310.py,create,force,bool
+docs_src\commands\help\tutorial007_py310.py,create,age,int | None
+docs_src\commands\help\tutorial007_py310.py,create,favorite_color,str | None
+docs_src\commands\help\tutorial007_py310.py,config,configuration,str
+docs_src\commands\help\tutorial007_py39.py,create,username,str
+docs_src\commands\help\tutorial007_py39.py,create,lastname,str
+docs_src\commands\help\tutorial007_py39.py,create,force,bool
+docs_src\commands\help\tutorial007_py39.py,create,age,"Union[int, None]"
+docs_src\commands\help\tutorial007_py39.py,create,favorite_color,"Union[str, None]"
+docs_src\commands\help\tutorial007_py39.py,config,configuration,str
+docs_src\commands\help\tutorial008_py39.py,create,username,str
+docs_src\commands\name\tutorial001_py39.py,cli_create_user,username,str
+docs_src\commands\name\tutorial001_py39.py,cli_delete_user,username,str
+docs_src\commands\options\tutorial001_an_py39.py,create,username,str
+docs_src\commands\options\tutorial001_an_py39.py,delete,username,str
+docs_src\commands\options\tutorial001_an_py39.py,delete,force,"Annotated[
+        bool, typer.Option(prompt=""Are you sure you want to delete the user?"")
+    ]"
+docs_src\commands\options\tutorial001_an_py39.py,delete_all,force,"Annotated[
+        bool, typer.Option(prompt=""Are you sure you want to delete ALL users?"")
+    ]"
+docs_src\commands\options\tutorial001_py39.py,create,username,str
+docs_src\commands\options\tutorial001_py39.py,delete,username,str
+docs_src\commands\options\tutorial001_py39.py,delete,force,bool
+docs_src\commands\options\tutorial001_py39.py,delete_all,force,bool
+docs_src\arguments\default\tutorial001_an_py39.py,main,name,"Annotated[str, typer.Argument()]"
+docs_src\arguments\default\tutorial001_py39.py,main,name,str
+docs_src\arguments\default\tutorial002_an_py39.py,main,name,"Annotated[str, typer.Argument(default_factory=get_name)]"
+docs_src\arguments\default\tutorial002_py39.py,main,name,str
+docs_src\arguments\envvar\tutorial001_an_py39.py,main,name,"Annotated[str, typer.Argument(envvar=""AWESOME_NAME"")]"
+docs_src\arguments\envvar\tutorial001_py39.py,main,name,str
+docs_src\arguments\envvar\tutorial002_an_py39.py,main,name,"Annotated[str, typer.Argument(envvar=[""AWESOME_NAME"", ""GOD_NAME""])]"
+docs_src\arguments\envvar\tutorial002_py39.py,main,name,str
+docs_src\arguments\envvar\tutorial003_an_py39.py,main,name,"Annotated[
+        str, typer.Argument(envvar=""AWESOME_NAME"", show_envvar=False)
+    ]"
+docs_src\arguments\envvar\tutorial003_py39.py,main,name,str
+docs_src\arguments\help\tutorial001_an_py39.py,main,name,"Annotated[str, typer.Argument(help=""The name of the user to greet"")]"
+docs_src\arguments\help\tutorial001_py39.py,main,name,str
+docs_src\arguments\help\tutorial002_an_py39.py,main,name,"Annotated[str, typer.Argument(help=""The name of the user to greet"")]"
+docs_src\arguments\help\tutorial002_py39.py,main,name,str
+docs_src\arguments\help\tutorial003_an_py39.py,main,name,"Annotated[str, typer.Argument(help=""Who to greet"")]"
+docs_src\arguments\help\tutorial003_py39.py,main,name,str
+docs_src\arguments\help\tutorial004_an_py39.py,main,name,"Annotated[
+        str, typer.Argument(help=""Who to greet"", show_default=False)
+    ]"
+docs_src\arguments\help\tutorial004_py39.py,main,name,str
+docs_src\arguments\help\tutorial005_an_py39.py,main,name,"Annotated[
+        str,
+        typer.Argument(
+            help=""Who to greet"", show_default=""Deadpoolio the amazing's name""
+        ),
+    ]"
+docs_src\arguments\help\tutorial005_py39.py,main,name,str
+docs_src\arguments\help\tutorial006_an_py39.py,main,name,"Annotated[str, typer.Argument(metavar=""✨username✨"")]"
+docs_src\arguments\help\tutorial006_py39.py,main,name,str
+docs_src\arguments\help\tutorial007_an_py39.py,main,name,"Annotated[str, typer.Argument(help=""Who to greet"")]"
+docs_src\arguments\help\tutorial007_an_py39.py,main,lastname,"Annotated[
+        str, typer.Argument(help=""The last name"", rich_help_panel=""Secondary Arguments"")
+    ]"
+docs_src\arguments\help\tutorial007_an_py39.py,main,age,"Annotated[
+        str,
+        typer.Argument(help=""The user's age"", rich_help_panel=""Secondary Arguments""),
+    ]"
+docs_src\arguments\help\tutorial007_py39.py,main,name,str
+docs_src\arguments\help\tutorial007_py39.py,main,lastname,str
+docs_src\arguments\help\tutorial007_py39.py,main,age,str
+docs_src\arguments\help\tutorial008_an_py39.py,main,name,"Annotated[str, typer.Argument(hidden=True)]"
+docs_src\arguments\help\tutorial008_py39.py,main,name,str
+docs_src\arguments\optional\tutorial000_an_py39.py,main,name,"Annotated[str, typer.Argument()]"
+docs_src\arguments\optional\tutorial000_py39.py,main,name,str
+docs_src\arguments\optional\tutorial001_an_py39.py,main,name,"Annotated[str, typer.Argument()]"
+docs_src\arguments\optional\tutorial001_py39.py,main,name,str
+docs_src\arguments\optional\tutorial002_an_py39.py,main,name,"Annotated[str, typer.Argument()]"
+docs_src\arguments\optional\tutorial002_py39.py,main,name,str
+docs_src\arguments\optional\tutorial003_py39.py,main,name,str

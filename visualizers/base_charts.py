@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from matplotlib.patches import Circle
 import seaborn as sns
 from pathlib import Path
 from typing import Optional, Dict, List, Tuple
@@ -65,7 +66,7 @@ class BaseChart:
                 colors=colors,
                 wedgeprops={"width": 0.5, "edgecolor": "white"},
             )
-            centre_circle = plt.Circle((0, 0), 0.70, fc="white")
+            centre_circle = Circle((0, 0), 0.70, fc="white")
             plt.gca().add_artist(centre_circle)
         else:
             plt.pie(

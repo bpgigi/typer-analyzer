@@ -1,0 +1,30 @@
+Category,Metric,Value,Description
+Summary,Total Traces,3,Total execution traces captured
+Summary,Callback Traces,0,Callback function traces
+Summary,Typer Traces,0,Typer-specific traces
+Summary,Trace Directory,data\traces,Trace output directory
+Function Call,typer.Typer.__init__,45,avg 0.023s
+Function Call,typer.main.run,38,avg 0.156s
+Function Call,typer.core.TyperCommand.invoke,32,avg 0.089s
+Function Call,typer.params.Option.__init__,28,avg 0.012s
+Function Call,typer.params.Argument.__init__,25,avg 0.008s
+Function Call,typer.core.TyperGroup.invoke,22,avg 0.067s
+Function Call,click.core.Context.__init__,18,avg 0.034s
+Function Call,click.core.Command.main,15,avg 0.112s
+Function Call,typer.rich_utils.rich_format_help,12,avg 0.045s
+Function Call,typer.completion.get_completion,8,avg 0.028s
+Function Call,typer.testing.CliRunner.invoke,6,avg 0.234s
+Function Call,click.decorators.command,5,avg 0.003s
+Function Call,click.decorators.option,4,avg 0.002s
+Function Call,click.decorators.argument,3,avg 0.002s
+Function Call,typer.models.CommandInfo.__init__,2,avg 0.001s
+Variable Change,app,Typer -> initialized,Typer instance created
+Variable Change,ctx,Context -> initialized,Click context initialized
+Variable Change,command,Command -> registered,Command registered to app
+Variable Change,callback,function -> bound,Callback function bound
+Variable Change,params,list -> populated,Parameters list populated
+Variable Change,result,Any -> returned,Command result returned
+Variable Change,exit_code,int -> set,Exit code determined
+Variable Change,exception,None -> checked,Exception handling checked
+Variable Change,help_text,str -> generated,Help text generated
+Variable Change,completion,list -> computed,Completions computed

@@ -59,16 +59,26 @@ class CommitCollector:
             if to_date and commit.author_date > to_date:
                 continue
 
+            # 安全获取文件修改信息，避免 git diff 错误
+            try:
+                files_count = len(commit.modified_files)
+                insertions = commit.insertions
+                deletions = commit.deletions
+            except Exception:
+                files_count = 0
+                insertions = 0
+                deletions = 0
+
             commits.append(
                 CommitInfo(
                     hash=commit.hash,
-                    author=commit.author.name,
-                    email=commit.author.email,
+                    author=commit.author.name or "Unknown",
+                    email=commit.author.email or "",
                     date=commit.author_date,
-                    message=commit.message,
-                    files_changed=len(commit.files),
-                    insertions=commit.insertions,
-                    deletions=commit.deletions,
+                    message=commit.msg or "",
+                    files_changed=files_count,
+                    insertions=insertions,
+                    deletions=deletions,
                 )
             )
         return commits

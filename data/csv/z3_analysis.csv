@@ -1,0 +1,31 @@
+type,variable,constraint,status,value
+cli_constraint,count,count >= 0,sat,sat
+cli_constraint,count,count <= 1000,sat,sat
+cli_constraint,verbose,"verbose in [0, 1, 2]",sat,sat
+cli_constraint,timeout,timeout > 0,sat,sat
+cli_constraint,timeout,timeout <= 3600,sat,sat
+cli_constraint,port,port >= 1024,sat,sat
+cli_constraint,port,port <= 65535,sat,sat
+cli_constraint,workers,workers >= 1,sat,sat
+cli_constraint,workers,workers <= 32,sat,sat
+cli_constraint,retries,retries >= 0,sat,sat
+type_compatibility,int,"Union[int, str]",compatible,True
+type_compatibility,str,"Union[int, str]",compatible,True
+type_compatibility,bool,bool,compatible,True
+type_compatibility,int,int,compatible,True
+type_compatibility,str,str,compatible,True
+type_compatibility,int,Optional[int],compatible,True
+type_compatibility,str,Optional[str],compatible,True
+type_compatibility,list,Sequence,compatible,True
+type_compatibility,dict,Mapping,compatible,True
+type_compatibility,tuple,"Tuple[int, str]",compatible,True
+boundary_check,array_index,0 <= idx < len,sat,verified
+boundary_check,string_slice,start <= end,sat,verified
+boundary_check,division,divisor != 0,sat,verified
+boundary_check,sqrt_input,value >= 0,sat,verified
+boundary_check,log_input,value > 0,sat,verified
+path_reachability,main_callback,ctx.invoked_subcommand is None,reachable,analyzed
+path_reachability,help_callback,--help flag set,reachable,analyzed
+path_reachability,version_callback,--version flag set,reachable,analyzed
+path_reachability,error_handler,exception raised,reachable,analyzed
+path_reachability,default_command,no subcommand,reachable,analyzed

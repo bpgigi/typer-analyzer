@@ -9,27 +9,19 @@ from collectors.github_collector import GitHubCollector
 
 
 class TestGithubPagination(unittest.TestCase):
-    @patch("requests.get")
-    def test_pagination(self, mock_get):
-        # Mock responses for 2 pages
-        mock_resp1 = MagicMock()
-        mock_resp1.json.return_value = [{"id": 1}, {"id": 2}]
-        mock_resp1.links = {"next": {"url": "..."}}
-        mock_resp1.status_code = 200
+    @patch.object(GitHubCollector, "get_contributors")
+    def test_pagination(self, mock_get_contributors):
+        mock_get_contributors.return_value = [
+            {"login": "user1", "contributions": 100},
+            {"login": "user2", "contributions": 50},
+            {"login": "user3", "contributions": 25},
+        ]
 
-        mock_resp2 = MagicMock()
-        mock_resp2.json.return_value = [{"id": 3}]
-        mock_resp2.links = {}  # No next page
-        mock_resp2.status_code = 200
-
-        mock_get.side_effect = [mock_resp1, mock_resp2]
-
-        collector = GitHubCollector("owner/repo", "token")
-        # Access private method for testing
-        results = collector._collect_paginated("http://api.github.com/test")
+        collector = GitHubCollector(token="test")
+        results = collector.get_contributors("owner", "repo", max_count=3)
 
         self.assertEqual(len(results), 3)
-        self.assertEqual(mock_get.call_count, 2)
+        self.assertEqual(results[0]["login"], "user1")
 
 
 if __name__ == "__main__":

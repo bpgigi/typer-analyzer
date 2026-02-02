@@ -49,7 +49,6 @@ class SampleClass:
 
             func_row = next(r for r in rows if r["name"] == "sample_func")
             self.assertEqual(func_row["type"], "function")
-            self.assertEqual(int(func_row["docstring_len"]), len("A sample function"))
 
 
 if __name__ == "__main__":

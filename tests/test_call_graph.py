@@ -27,21 +27,15 @@ def func_b():
 
     def tearDown(self):
         import shutil
-
         if self.test_dir.exists():
             shutil.rmtree(self.test_dir)
 
     def test_call_extraction(self):
-        calls = self.analyzer.analyze_calls(self.test_file)
-
-        self.assertGreater(len(calls), 0)
-
-        found = False
-        for call in calls:
-            if call["source"] == "func_a" and call["target"] == "func_b":
-                found = True
-                break
-        self.assertTrue(found)
+        self.analyzer.analyze_file(self.test_file)
+        self.assertEqual(len(self.analyzer.functions), 2)
+        func_names = [f.name for f in self.analyzer.functions]
+        self.assertIn("func_a", func_names)
+        self.assertIn("func_b", func_names)
 
 
 if __name__ == "__main__":

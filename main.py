@@ -27,6 +27,7 @@ class RepositoryAnalyzer:
         self._validate_paths()
         self._setup_directories()
         self.commits = []
+        self.contributors = []
         self.ast_results = {}
         self.type_coverage = {}
         self.complexity_data = []
@@ -49,6 +50,46 @@ class RepositoryAnalyzer:
         (self.data_dir / "traces").mkdir(exist_ok=True)
 
     def collect_commits(self) -> None:
+        cache_file = self.data_dir / "json" / "commits_full.json"
+        if cache_file.exists():
+            print("读取缓存的提交数据...")
+            with open(cache_file, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            print(f"  从缓存读取 {len(cached)} 个提交")
+
+            from collectors import CommitCollector
+            from dataclasses import dataclass
+            from datetime import datetime as dt
+
+            @dataclass
+            class CacheCommit:
+                hash: str
+                author: str
+                email: str
+                date: dt
+                message: str
+                files_changed: int
+                insertions: int
+                deletions: int
+
+            self.commits = []
+            for c in cached:
+                try:
+                    date = dt.fromisoformat(c.get("date", c.get("日期", "")))
+                except:
+                    date = dt.now()
+                self.commits.append(CacheCommit(
+                    hash=c.get("hash", c.get("哈希", "")),
+                    author=c.get("author", c.get("作者", "")),
+                    email=c.get("email", c.get("邮箱", "")),
+                    date=date,
+                    message=c.get("message", c.get("消息", "")),
+                    files_changed=c.get("files_changed", c.get("修改文件数", 0)),
+                    insertions=c.get("insertions", c.get("新增行数", 0)),
+                    deletions=c.get("deletions", c.get("删除行数", 0)),
+                ))
+            return
+
         print("采集 Git 提交数据...")
         from collectors import CommitCollector, DataExporter
 
@@ -61,9 +102,38 @@ class RepositoryAnalyzer:
         print(f"  导出 commits.csv")
 
         commits_data = [collector.to_dict(c) for c in self.commits]
-        with open(self.data_dir / "json" / "commits_full.json", "w", encoding="utf-8") as f:
+        with open(cache_file, "w", encoding="utf-8") as f:
             json.dump(commits_data, f, ensure_ascii=False, indent=2, default=str)
         print(f"  导出 commits_full.json")
+
+    def collect_contributors(self) -> None:
+        """采集 GitHub 贡献者数据"""
+        cache_file = self.data_dir / "json" / "contributors.json"
+        if cache_file.exists():
+            print("读取缓存的贡献者数据...")
+            with open(cache_file, "r", encoding="utf-8") as f:
+                self.contributors = json.load(f)
+            print(f"  从缓存读取 {len(self.contributors)} 个贡献者")
+            return
+
+        print("采集 GitHub 贡献者数据...")
+        from collectors.github_collector import GitHubCollector
+        import os
+
+        token = os.environ.get("GITHUB_TOKEN")
+        collector = GitHubCollector(token=token)
+
+        try:
+            self.contributors = collector.get_contributors("fastapi", "typer", max_count=200)
+            print(f"  采集到 {len(self.contributors)} 个贡献者")
+
+            with open(cache_file, "w", encoding="utf-8") as f:
+                json.dump(self.contributors, f, ensure_ascii=False, indent=2)
+            print(f"  导出 contributors.json")
+        except Exception as e:
+            print(f"  采集失败: {e}")
+            self.contributors = []
+
 
     def analyze_ast(self) -> None:
         print("执行 AST 静态分析...")
@@ -73,17 +143,22 @@ class RepositoryAnalyzer:
         python_files = list(self.repo_path.rglob("*.py"))
 
         for py_file in python_files:
-            try:
-                analyzer.analyze_file(py_file)
-            except Exception:
-                pass
+            if ".git" not in str(py_file):
+                try:
+                    analyzer.analyze_file(py_file)
+                except Exception:
+                    pass
 
         self.ast_results = analyzer.get_results()
-        self.complexity_data = self.ast_results.get("functions", [])
+        self.complexity_data = [
+            {"name": f.name, "complexity": f.complexity, "lineno": f.lineno}
+            for f in analyzer.functions
+        ]
         print(f"  分析 {len(python_files)} 个文件，发现 {self.ast_results['functions_count']} 个函数")
 
         analyzer.export_to_csv(str(self.data_dir / "csv" / "ast_analysis.csv"))
         print(f"  导出 ast_analysis.csv")
+
 
     def analyze_types(self) -> None:
         print("执行 LibCST 类型注解分析...")
@@ -219,7 +294,7 @@ class RepositoryAnalyzer:
                     analyzer.add_constraint(var > val, constraint)
                 status = analyzer.check_constraints()
                 results.append({
-                    "type": "CLI参数约束",
+                    "type": "cli_constraint",
                     "variable": var_name,
                     "constraint": constraint,
                     "status": status,
@@ -245,10 +320,10 @@ class RepositoryAnalyzer:
         for src_type, dst_type in type_checks:
             compat = analyzer.check_type_compatibility(src_type, dst_type)
             results.append({
-                "type": "类型兼容性",
+                "type": "type_compatibility",
                 "variable": src_type,
                 "constraint": dst_type,
-                "status": "兼容" if compat else "不兼容",
+                "status": "compatible" if compat else "incompatible",
                 "value": str(compat),
             })
 
@@ -263,7 +338,7 @@ class RepositoryAnalyzer:
 
         for name, condition, expected in boundary_checks:
             results.append({
-                "type": "边界条件",
+                "type": "boundary_check",
                 "variable": name,
                 "constraint": condition,
                 "status": expected,
@@ -281,7 +356,7 @@ class RepositoryAnalyzer:
 
         for path_name, condition, status in paths:
             results.append({
-                "type": "路径可达性",
+                "type": "path_reachability",
                 "variable": path_name,
                 "constraint": condition,
                 "status": status,
@@ -294,176 +369,39 @@ class RepositoryAnalyzer:
 
 
     def generate_all_visualizations(self) -> None:
-        """生成全部可视化图表"""
+        """使用新的generator生成全部可视化图表"""
         print("生成可视化图表...")
         if not self.commits:
             print("  无提交数据，跳过")
             return
 
-        from visualizers import (
-            AuthorCharts,
-            YearlyChart,
-            TrendsChart,
-            TimeHeatmap,
-            HighComplexityChart,
-            FileHeatmap,
-            CodeChurnChart,
-        )
+        from visualizers.generator import VisualizationGenerator
 
         commits_data = [
-            {"author": c.author, "date": c.date.isoformat(), "insertions": getattr(c, 'insertions', 0), "deletions": getattr(c, 'deletions', 0)}
+            {
+                "author": c.author,
+                "date": c.date.isoformat(),
+                "insertions": getattr(c, 'insertions', 0),
+                "deletions": getattr(c, 'deletions', 0),
+            }
             for c in self.commits
         ]
 
-        generated = 0
+        generator = VisualizationGenerator(
+            output_dir=str(self.output_dir),
+            data_dir=str(self.data_dir),
+        )
 
-        # 1. 作者贡献饼图
-        try:
-            chart = AuthorCharts(output_dir=str(self.output_dir))
-            chart.plot_contribution_pie(commits_data, "01_author_contribution_pie.png")
-            print("  01_author_contribution_pie.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表1失败: {e}")
-
-        # 2. 提交时间热力图
-        try:
-            chart = TimeHeatmap(output_dir=str(self.output_dir))
-            chart.plot_commit_heatmap(commits_data, "02_commit_time_heatmap.png")
-            print("  02_commit_time_heatmap.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表2失败: {e}")
-
-        # 3. 年度提交柱状图
-        try:
-            chart = YearlyChart(output_dir=str(self.output_dir))
-            chart.plot_yearly_commits(commits_data, "03_yearly_commits_bar.png")
-            print("  03_yearly_commits_bar.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表3失败: {e}")
-
-        # 4. 月度趋势折线图
-        try:
-            self._generate_monthly_trend(commits_data, "04_monthly_trend_line.png")
-            print("  04_monthly_trend_line.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表4失败: {e}")
-
-        # 5. 文件修改热力图
-        try:
-            chart = FileHeatmap(output_dir=str(self.output_dir))
-            file_data = self._get_file_stats()
-            if file_data:
-                chart.plot_file_heatmap(file_data, "05_file_change_heatmap.png")
-                print("  05_file_change_heatmap.png")
-                generated += 1
-        except Exception as e:
-            print(f"  图表5失败: {e}")
-
-        # 6. 代码增删趋势图
-        try:
-            chart = CodeChurnChart(output_dir=str(self.output_dir))
-            chart.plot_churn_trend(commits_data, "06_code_churn_trend.png")
-            print("  06_code_churn_trend.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表6失败: {e}")
-
-        # 7. 高复杂度函数排行
-        try:
-            if self.complexity_data:
-                chart = HighComplexityChart(output_dir=str(self.output_dir))
-                chart.plot_top_complexity(self.complexity_data, "07_high_complexity_top10.png")
-                print("  07_high_complexity_top10.png")
-                generated += 1
-        except Exception as e:
-            print(f"  图表7失败: {e}")
-
-        # 8. 提交消息词云
-        try:
-            self._generate_wordcloud(commits_data, "08_commit_message_wordcloud.png")
-            print("  08_commit_message_wordcloud.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表8失败: {e}")
-
-        # 9. 文件类型分布饼图
-        try:
-            self._generate_file_type_pie("09_file_type_pie.png")
-            print("  09_file_type_pie.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表9失败: {e}")
-
-        # 10. 贡献者活跃度排行
-        try:
-            self._generate_contributor_ranking(commits_data, "10_contributor_activity.png")
-            print("  10_contributor_activity.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表10失败: {e}")
-
-        # 11. 累积提交趋势
-        try:
-            self._generate_cumulative_commits(commits_data, "11_cumulative_commits.png")
-            print("  11_cumulative_commits.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表11失败: {e}")
-
-        # 12. 星期提交分布
-        try:
-            self._generate_weekday_distribution(commits_data, "12_weekday_distribution.png")
-            print("  12_weekday_distribution.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表12失败: {e}")
-
-        # 13. 小时提交分布
-        try:
-            self._generate_hour_distribution(commits_data, "13_hour_distribution.png")
-            print("  13_hour_distribution.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表13失败: {e}")
-
-        # 14. 作者提交时间线
-        try:
-            self._generate_author_timeline_simple(commits_data, "14_author_timeline.png")
-            print("  14_author_timeline.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表14失败: {e}")
-
-        # 15. 提交类型分布
-        try:
-            self._generate_commit_type_pie(commits_data, "15_commit_type_pie.png")
-            print("  15_commit_type_pie.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表15失败: {e}")
-
-        # 16. 复杂度分布直方图
-        try:
-            if self.complexity_data:
-                self._generate_complexity_histogram("16_complexity_distribution.png")
-                print("  16_complexity_distribution.png")
-                generated += 1
-        except Exception as e:
-            print(f"  图表16失败: {e}")
-
-        # 17. 年度作者对比
-        try:
-            self._generate_yearly_author_comparison(commits_data, "17_yearly_author_comparison.png")
-            print("  17_yearly_author_comparison.png")
-            generated += 1
-        except Exception as e:
-            print(f"  图表17失败: {e}")
+        generated = generator.generate_all(
+            commits=self.commits,
+            commits_data=commits_data,
+            complexity_data=self.complexity_data,
+            repo_path=self.repo_path,
+            contributors=self.contributors,
+        )
 
         print(f"  共生成 {generated} 张图表")
+
 
     def _get_file_stats(self) -> List[Dict]:
         """获取文件修改统计"""
@@ -804,6 +742,7 @@ class RepositoryAnalyzer:
         print("-" * 40)
 
         self.collect_commits()
+        self.collect_contributors()
         self.analyze_ast()
         self.analyze_types()
         self.run_dynamic_tracing()

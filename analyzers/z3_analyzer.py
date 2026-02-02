@@ -91,42 +91,45 @@ class Z3Analyzer:
         返回:
             约束违反记录列表
         """
-        self.solver.reset()
         violations = []
 
-        # 根据值类型创建对应的 Z3 变量
-        if isinstance(value, int):
-            z3_var = Int(param_name)
-            self.solver.add(z3_var == value)
-        elif isinstance(value, bool):
-            z3_var = Bool(param_name)
-            self.solver.add(z3_var == value)
-        elif isinstance(value, str):
-            z3_var = String(param_name)
-            self.solver.add(z3_var == StringVal(value))
-        else:
-            logger.warning(f"不支持的 Z3 验证类型: {type(value)}")
-            return []
-
-        # 验证每个约束
         for constraint_str in constraints:
             s = Solver()
-            s.add(z3_var == value)
+
+            if isinstance(value, int):
+                z3_var = Int(param_name)
+                s.add(z3_var == value)
+            elif isinstance(value, bool):
+                z3_var = Bool(param_name)
+                s.add(z3_var == value)
+            elif isinstance(value, str):
+                z3_var = String(param_name)
+                s.add(z3_var == StringVal(value))
+            else:
+                continue
 
             try:
+                safe_constraint = constraint_str.replace(param_name, "z3_var")
                 context = {
-                    param_name: z3_var,
+                    "z3_var": z3_var,
                     "And": And,
                     "Or": Or,
                     "Not": Not,
-                    "Int": Int,
-                    "Bool": Bool,
-                    "String": String,
-                    "Length": Length,
                 }
-                pass
+                constraint_expr = eval(safe_constraint, {"__builtins__": {}}, context)
+                s.add(Not(constraint_expr))
+
+                if s.check() == sat:
+                    violations.append(
+                        ConstraintViolation(
+                            variable=param_name,
+                            constraint=constraint_str,
+                            violation_value=value,
+                            message=f"{param_name}={value} violates constraint: {constraint_str}",
+                        )
+                    )
             except Exception as e:
-                logger.error(f"约束求值失败 {constraint_str}: {e}")
+                logger.debug(f"约束求值失败 {constraint_str}: {e}")
 
         return violations
 
@@ -253,7 +256,7 @@ class Z3Analyzer:
         self, output_file: str, analysis_results: List[Dict[str, Any]]
     ):
         """
-        导出分析结果到 CSV 文件
+        导出分析结果到 CSV 文件（英文表头）
 
         参数:
             output_file: 输出文件路径
@@ -261,7 +264,7 @@ class Z3Analyzer:
         """
         import csv
 
-        headers = ["类型", "变量", "约束", "状态", "值"]
+        headers = ["type", "variable", "constraint", "status", "value"]
 
         with open(output_file, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=headers)
@@ -270,11 +273,11 @@ class Z3Analyzer:
             for result in analysis_results:
                 writer.writerow(
                     {
-                        "类型": result.get("type", "约束"),
-                        "变量": result.get("variable", ""),
-                        "约束": result.get("constraint", ""),
-                        "状态": result.get("status", "未知"),
-                        "值": str(result.get("value", "")),
+                        "type": result.get("type", "constraint"),
+                        "variable": result.get("variable", ""),
+                        "constraint": result.get("constraint", ""),
+                        "status": result.get("status", "unknown"),
+                        "value": str(result.get("value", "")),
                     }
                 )
 

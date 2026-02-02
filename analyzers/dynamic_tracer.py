@@ -1,3 +1,8 @@
+"""
+PySnooper 动态追踪模块
+用于追踪 Typer 框架的运行时行为，包括函数调用、变量变化等
+"""
+
 import pysnooper
 from pathlib import Path
 from typing import Optional, List, Dict, Any, Callable
